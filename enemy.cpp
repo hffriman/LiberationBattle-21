@@ -18,6 +18,11 @@ QString Enemy::GetName()
     return this->name;
 }
 
+void Enemy::SetImage(QWidget* image)
+{
+    this->enemyImage = image;
+}
+
 void Enemy::DecreaseHealth(float damage)
 {
     healthPoints -= damage;

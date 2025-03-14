@@ -134,7 +134,7 @@
        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="Background">
+     <widget class="QLabel" name="Background1">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -156,7 +156,7 @@
        <enum>Qt::TextFormat::RichText</enum>
       </property>
      </widget>
-     <zorder>Background</zorder>
+     <zorder>Background1</zorder>
      <zorder>GameTitle</zorder>
      <zorder>StartGame</zorder>
      <zorder>Quit</zorder>
@@ -164,13 +164,13 @@
      <zorder>Version</zorder>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="Background2">
       <property name="geometry">
        <rect>
         <x>12</x>
         <y>9</y>
         <width>1181</width>
-        <height>661</height>
+        <height>731</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -239,6 +239,208 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>ACCEPT</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QLabel" name="Background3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-40</y>
+        <width>1201</width>
+        <height>721</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(204, 65, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Player">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Enemy">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="SwordAttack">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>450</y>
+        <width>251</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SWORD ATTACK</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>550</y>
+        <width>251</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>GUN ATTACK</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>550</y>
+        <width>251</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>REPAIR WEAPONS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>450</y>
+        <width>251</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>GUARD</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CommandGUI">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>410</y>
+        <width>1211</width>
+        <height>271</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(148, 162, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PlayerIcon">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>450</y>
+        <width>171</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="SwordsLeft">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>450</y>
+        <width>101</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>4 / 4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="SwordsLeft_2">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>550</y>
+        <width>101</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>4 / 4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <zorder>Background3</zorder>
+     <zorder>CommandGUI</zorder>
+     <zorder>Player</zorder>
+     <zorder>Enemy</zorder>
+     <zorder>SwordAttack</zorder>
+     <zorder>pushButton_2</zorder>
+     <zorder>pushButton_3</zorder>
+     <zorder>pushButton_4</zorder>
+     <zorder>PlayerIcon</zorder>
+     <zorder>SwordsLeft</zorder>
+     <zorder>SwordsLeft_2</zorder>
     </widget>
    </widget>
   </widget>

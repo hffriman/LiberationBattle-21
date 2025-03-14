@@ -30,9 +30,13 @@ void MainWindow::on_Quit_clicked()
 
 void MainWindow::on_Accept_clicked()
 {
-    qDebug() << player->GetName();
     player->SetName(ui->playerName->toPlainText());
-    qDebug() << player->GetName() << " vs " << enemy->GetName();
-}
+    ui->stackedWidget->setCurrentIndex(2);
+    player->SetImage(ui->Player);
+    enemy->SetImage(ui->Enemy);
 
+    player->SetGunsLeft(player->GetGunsLeft() / 2);
+    qDebug() << player->GetGunsLeft();
+
+}
 
