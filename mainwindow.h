@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "player.h"
+#include "enemy.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+class LiberationBattle21;
 }
 QT_END_NAMESPACE
 
@@ -16,7 +18,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QString playerName;
+    Player* player;
+    Enemy* enemy;
 
 private slots:
     void on_StartGame_clicked();
@@ -26,6 +29,6 @@ private slots:
     void on_Accept_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::LiberationBattle21 *ui;
 };
 #endif // MAINWINDOW_H

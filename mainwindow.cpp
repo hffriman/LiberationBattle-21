@@ -1,11 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "player.h"
+#include "enemy.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::LiberationBattle21)
 {
     ui->setupUi(this);
+    player = new Player();
+    enemy = new Enemy();
 }
 
 MainWindow::~MainWindow()
@@ -24,11 +28,11 @@ void MainWindow::on_Quit_clicked()
     this->close();
 }
 
-
 void MainWindow::on_Accept_clicked()
 {
-    playerName = ui->playerName->toPlainText();
-    qDebug() << playerName;
+    qDebug() << player->GetName();
+    player->SetName(ui->playerName->toPlainText());
+    qDebug() << player->GetName() << " vs " << enemy->GetName();
 }
 
 

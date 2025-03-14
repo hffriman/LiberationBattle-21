@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>LiberationBattle21</class>
+ <widget class="QMainWindow" name="LiberationBattle21">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -242,7 +242,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </widget>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -251,14 +252,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuLiberationBattle21">
-    <property name="title">
-     <string>LiberationBattle21</string>
-    </property>
-   </widget>
-   <addaction name="menuLiberationBattle21"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
