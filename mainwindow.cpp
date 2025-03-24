@@ -2,12 +2,20 @@
 #include "ui_mainwindow.h"
 #include "player.h"
 #include "enemy.h"
+#include "card.h"
+#include "deck.h"
+#include <QFile>
+#include <QJsonParseError>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LiberationBattle21)
 {
     ui->setupUi(this);
+
+    Deck* deck = new Deck();
+    deck->CreateDeck();
+
     player = new Player();
     enemy = new Enemy();
 }
@@ -36,7 +44,13 @@ void MainWindow::on_Accept_clicked()
     enemy->SetImage(ui->Enemy);
 
     player->SetGunsLeft(player->GetGunsLeft() / 2);
-    qDebug() << player->GetGunsLeft();
+
+    Card cards[52];
+
+    for(Card card: cards)
+    {
+
+    }
 
 }
 
