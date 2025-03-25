@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "player.h"
 #include "enemy.h"
+#include "deck.h"
+#include "gamemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,6 +22,8 @@ public:
     ~MainWindow();
     Player* player;
     Enemy* enemy;
+    Deck* deck;
+    GameManager* gameManager;
 
 private slots:
     void on_StartGame_clicked();
@@ -27,6 +31,14 @@ private slots:
     void on_Quit_clicked();
 
     void on_Accept_clicked();
+
+    void on_SwordAttack_clicked();
+
+    void on_GunAttack_clicked();
+
+    void UpdatePlayerStatus();
+
+    void DrawCard();
 
 private:
     Ui::LiberationBattle21 *ui;

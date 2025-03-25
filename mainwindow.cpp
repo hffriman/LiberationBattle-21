@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "player.h"
 #include "enemy.h"
-#include "card.h"
 #include "deck.h"
 #include <QFile>
 #include <QJsonParseError>
@@ -13,11 +12,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    Deck* deck = new Deck();
+    deck = new Deck();
     deck->CreateDeck();
 
     player = new Player();
     enemy = new Enemy();
+    gameManager = new GameManager();
 }
 
 MainWindow::~MainWindow()
@@ -42,15 +42,54 @@ void MainWindow::on_Accept_clicked()
     ui->stackedWidget->setCurrentIndex(2);
     player->SetImage(ui->Player);
     enemy->SetImage(ui->Enemy);
-
-    player->SetGunsLeft(player->GetGunsLeft() / 2);
-
-    Card cards[52];
-
-    for(Card card: cards)
-    {
-
-    }
-
+    player->SetGunsLeft(player->GetGunsLeft());
+    gameManager->SetTotalTurnsPassed(1);
+    UpdatePlayerStatus();
 }
 
+
+void MainWindow::on_SwordAttack_clicked()
+{
+    if (player->GetSwordsLeft() > 0)
+    {
+        gameManager->SetCurrentlyDrawnCards(1);
+        player->SetSwordsLeft(player->GetSwordsLeft() - 1);
+        ui->stackedWidget->setCurrentIndex(3);
+        ui->Action->setText("SWORD ATTACK");
+        DrawCard();
+    }
+}
+
+void MainWindow::on_GunAttack_clicked()
+{
+    gameManager->SetCurrentlyDrawnCards(1);
+    player->SetGunsLeft(player->GetGunsLeft() - 1);
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->Action->setText("GUN ATTACK");
+    DrawCard();
+}
+
+void MainWindow::UpdatePlayerStatus()
+{
+    QString updatedSwordStatusText = *new QString();
+    updatedSwordStatusText.append(QString::number(player->GetSwordsLeft()));
+    updatedSwordStatusText.append(" / ");
+    updatedSwordStatusText.append(QString::number(player->GetSwordsTotal()));
+    ui->SwordStatus->setText(updatedSwordStatusText);
+
+    QString updatedGunStatusText = *new QString();
+    updatedGunStatusText.append(QString::number(player->GetGunsLeft()));
+    updatedGunStatusText.append(" / ");
+    updatedGunStatusText.append((QString::number(player->GetGunsTotal())));
+    ui->GunStatus->setText(updatedGunStatusText);
+}
+
+void MainWindow::DrawCard()
+{
+    int randomizedNumber = rand() % 53;
+    Card drawnCard = deck->cards[randomizedNumber];
+    QPixmap image (QString(drawnCard.GetCardImageSource()));
+    gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + drawnCard.GetCardPoints());
+    ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
+    ui->Card->setPixmap(image);
+}

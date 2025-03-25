@@ -12,6 +12,7 @@ SOURCES += \
     card.cpp \
     deck.cpp \
     enemy.cpp \
+    gamemanager.cpp \
     main.cpp \
     mainwindow.cpp \
     player.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     card.h \
     deck.h \
     enemy.h \
+    gamemanager.h \
     mainwindow.h \
     player.h
 
