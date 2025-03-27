@@ -38,7 +38,13 @@ private slots:
 
     void UpdatePlayerStatus();
 
+    void ResetCardBoard();
+
     void DrawCard();
+
+    void AceCardSelection();
+
+    void on_DrawMore_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

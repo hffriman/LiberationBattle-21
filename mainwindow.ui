@@ -509,6 +509,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <height>581</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 85, 0);</string>
       </property>
@@ -545,7 +550,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>440</y>
+        <y>420</y>
         <width>151</width>
         <height>51</height>
        </rect>
@@ -586,10 +591,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="DrawnCardNumber">
+     <widget class="QLabel" name="DrawnCardText">
       <property name="geometry">
        <rect>
-        <x>700</x>
+        <x>650</x>
         <y>40</y>
         <width>171</width>
         <height>71</height>
@@ -604,7 +609,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>CARD 1</string>
+       <string>CARD</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -613,9 +618,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="TotalPointsValue">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>440</y>
-        <width>61</width>
+        <x>670</x>
+        <y>420</y>
+        <width>111</width>
         <height>51</height>
        </rect>
       </property>
@@ -632,6 +637,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
      </widget>
      <widget class="QPushButton" name="DrawMore">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -657,17 +665,145 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>STOP</string>
       </property>
      </widget>
+     <widget class="QLabel" name="ActionPerfectText">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>470</y>
+        <width>391</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>THE ACTION HAS BECOME PERFECT</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ActionFailedText">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>470</y>
+        <width>271</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>THE ACTION HAS FAILED</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Ace10">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>240</y>
+        <width>101</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>10</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Ace1">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>240</y>
+        <width>101</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="AceNoticeText">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>470</y>
+        <width>411</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>YOU GOT AN ACE. CHOOSE ITS VALUE!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DrawnCardNumber">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>40</y>
+        <width>91</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <zorder>Background4</zorder>
      <zorder>Enemy_2</zorder>
      <zorder>Player_2</zorder>
      <zorder>CardBoard</zorder>
      <zorder>TotalPointsLabel</zorder>
      <zorder>Action</zorder>
-     <zorder>DrawnCardNumber</zorder>
+     <zorder>DrawnCardText</zorder>
      <zorder>TotalPointsValue</zorder>
      <zorder>DrawMore</zorder>
      <zorder>Stop</zorder>
      <zorder>Card</zorder>
+     <zorder>ActionPerfectText</zorder>
+     <zorder>ActionFailedText</zorder>
+     <zorder>Ace10</zorder>
+     <zorder>Ace1</zorder>
+     <zorder>AceNoticeText</zorder>
+     <zorder>DrawnCardNumber</zorder>
     </widget>
    </widget>
   </widget>
