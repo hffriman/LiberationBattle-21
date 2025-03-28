@@ -324,7 +324,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>GUN ATTACK</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="RepairWeapons">
+     <widget class="QPushButton" name="WeaponRepairment">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -334,10 +334,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </rect>
       </property>
       <property name="text">
-       <string>REPAIR WEAPONS</string>
+       <string>WEAPON REPAIRMENT</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Guard">
+     <widget class="QPushButton" name="LifeRestoration">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -347,16 +347,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </rect>
       </property>
       <property name="text">
-       <string>GUARD</string>
+       <string>LIFE RESTORATION</string>
       </property>
      </widget>
      <widget class="QLabel" name="CommandGUI">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>410</y>
+        <y>380</y>
         <width>1211</width>
-        <height>271</height>
+        <height>301</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -369,10 +369,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="PlayerIcon">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>70</x>
         <y>450</y>
-        <width>171</width>
-        <height>171</height>
+        <width>141</width>
+        <height>141</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -430,17 +430,111 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="PlayerNameText">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>410</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>DOMINIQUE</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PlayerHP">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>600</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>200 / 200</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="EnemyName">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>90</y>
+        <width>171</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>NOSFERATU</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="EnemyHP">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>130</y>
+        <width>171</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>10000 / 10000</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <zorder>Background3</zorder>
      <zorder>CommandGUI</zorder>
      <zorder>Player</zorder>
      <zorder>Enemy</zorder>
      <zorder>SwordAttack</zorder>
      <zorder>GunAttack</zorder>
-     <zorder>RepairWeapons</zorder>
-     <zorder>Guard</zorder>
+     <zorder>WeaponRepairment</zorder>
+     <zorder>LifeRestoration</zorder>
      <zorder>PlayerIcon</zorder>
      <zorder>SwordStatus</zorder>
      <zorder>GunStatus</zorder>
+     <zorder>PlayerNameText</zorder>
+     <zorder>PlayerHP</zorder>
+     <zorder>EnemyName</zorder>
+     <zorder>EnemyHP</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
      <widget class="QLabel" name="Player_2">
@@ -618,9 +712,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="TotalPointsValue">
       <property name="geometry">
        <rect>
-        <x>670</x>
+        <x>660</x>
         <y>420</y>
-        <width>111</width>
+        <width>51</width>
         <height>51</height>
        </rect>
       </property>
@@ -634,6 +728,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="text">
        <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="DrawMore">
@@ -671,9 +768,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>350</x>
         <y>470</y>
-        <width>391</width>
+        <width>521</width>
         <height>31</height>
        </rect>
       </property>
@@ -688,13 +785,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="text">
        <string>THE ACTION HAS BECOME PERFECT</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLabel" name="ActionFailedText">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>360</x>
         <y>470</y>
-        <width>271</width>
+        <width>501</width>
         <height>31</height>
        </rect>
       </property>
@@ -708,6 +808,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="text">
        <string>THE ACTION HAS FAILED</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="Ace10">
@@ -745,9 +848,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="AceNoticeText">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>360</x>
         <y>470</y>
-        <width>411</width>
+        <width>501</width>
         <height>31</height>
        </rect>
       </property>
@@ -761,6 +864,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="text">
        <string>YOU GOT AN ACE. CHOOSE ITS VALUE!</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="DrawnCardNumber">
@@ -804,6 +910,104 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <zorder>Ace1</zorder>
      <zorder>AceNoticeText</zorder>
      <zorder>DrawnCardNumber</zorder>
+    </widget>
+    <widget class="QWidget" name="page_5">
+     <widget class="QLabel" name="Background5">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>-10</y>
+        <width>1201</width>
+        <height>721</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(204, 65, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Player_3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CommandGUI_2">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>410</y>
+        <width>1201</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(148, 162, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ActionMessage">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>440</y>
+        <width>611</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>YOU USED [ACTION]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ActionResultMessage">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>520</y>
+        <width>611</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>1000 DAMAGE INFLICTED TO NOSFERATU</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

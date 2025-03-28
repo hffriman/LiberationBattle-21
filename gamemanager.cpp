@@ -36,3 +36,13 @@ int GameManager::GetPointsInCurrentTurn()
 {
     return this->pointsInCurrentTurn;
 }
+
+void GameManager::SetCurrentAction(QString actionName)
+{
+    this->currentAction = actionName;
+}
+
+QString GameManager::GetCurrentAction()
+{
+    return this->currentAction.toUpper();
+}

@@ -24,12 +24,25 @@ public:
     int GetGunsTotal();
 
     void SetImage(QWidget* image);
-    void DecreaseHealth(float damage);
+
+    void SetHealthPoinst(int points);
+    int GetHealthPoints();
+
+    void SetSwordDamage(int damage);
+    int GetSwordDamage();
+
+    void SetGunDamage(int damage);
+    int GetGunDamage();
+
+    void SetGuardPoints(int points);
+    int GetGuardPoints();
 
 private:
     QString name;
-    float healthPoints;
-    float damagePoints;
+    int healthPoints;
+    int swordDamage;
+    int gunDamage;
+    int guardPoints;
     QWidget* playerImage;
     int swordsTotal;
     int swordsLeft;

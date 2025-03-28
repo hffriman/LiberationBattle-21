@@ -42,9 +42,23 @@ private slots:
 
     void DrawCard();
 
+    void CheckCurrentCardPoints();
+
+    void PreventDrawing(int statusCode);
+
     void AceCardSelection();
 
     void on_DrawMore_clicked();
+
+    void on_Ace1_clicked();
+
+    void on_Ace10_clicked();
+
+    void on_Stop_clicked();
+
+    void on_LifeRestoration_clicked();
+
+    void on_WeaponRepairment_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

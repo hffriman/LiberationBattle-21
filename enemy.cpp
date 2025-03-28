@@ -2,9 +2,9 @@
 
 Enemy::Enemy() {
 
-    name = "Nosferatu";
-    healthPoints = 1000.0f;
-    damagePoints = 200.0f;
+    name = "NOSFERATU";
+    healthPoints = 3000.0f;
+    damagePoints = 400.0f;
 }
 
 

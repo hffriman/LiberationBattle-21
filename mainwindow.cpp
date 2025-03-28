@@ -40,8 +40,12 @@ void MainWindow::on_Accept_clicked()
 {
     player->SetName(ui->playerName->toPlainText());
     ui->stackedWidget->setCurrentIndex(2);
+
+    ui->PlayerNameText->setText(player->GetName());
+
     player->SetImage(ui->Player);
     enemy->SetImage(ui->Enemy);
+
     player->SetGunsLeft(player->GetGunsLeft());
     gameManager->SetTotalTurnsPassed(1);
     UpdatePlayerStatus();
@@ -52,11 +56,11 @@ void MainWindow::on_SwordAttack_clicked()
 {
     if (player->GetSwordsLeft() > 0)
     {
-        ResetCardBoard();
+        gameManager->SetCurrentAction("SWORD ATTACK");
         player->SetSwordsLeft(player->GetSwordsLeft() - 1);
         ui->stackedWidget->setCurrentIndex(3);
-        ui->Action->setText("SWORD ATTACK");
-        ResetCardBoard();
+        ui->Action->setText(gameManager->GetCurrentAction());
+        gameManager->SetCurrentAction(gameManager->GetCurrentAction());
         DrawCard();
     }
 }
@@ -65,16 +69,38 @@ void MainWindow::on_GunAttack_clicked()
 {
     if (player->GetGunsLeft() > 0)
     {
-        ResetCardBoard();
+        gameManager->SetCurrentAction("GUN ATTACK");
         player->SetGunsLeft(player->GetGunsLeft() - 1);
         ui->stackedWidget->setCurrentIndex(3);
-        ui->Action->setText("GUN ATTACK");
+        ui->Action->setText(gameManager->GetCurrentAction());
         DrawCard();
     }
 }
 
+
+void MainWindow::on_LifeRestoration_clicked()
+{
+    gameManager->SetCurrentAction("LIFE RESTORATION");
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->Action->setText(gameManager->GetCurrentAction());
+    DrawCard();
+}
+
+
+void MainWindow::on_WeaponRepairment_clicked()
+{
+    gameManager->SetCurrentAction("WEAPON REPAIRMENT");
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->Action->setText(gameManager->GetCurrentAction());
+    DrawCard();
+}
+
 void MainWindow::UpdatePlayerStatus()
 {
+    gameManager->SetCurrentlyDrawnCards(0);
+    gameManager->SetPointsInCurrentTurn(0);
+    gameManager->SetTotalTurnsPassed(gameManager->GetTotalTurnsPassed() + 1);
+
     QString updatedSwordStatusText = *new QString();
     updatedSwordStatusText.append(QString::number(player->GetSwordsLeft()));
     updatedSwordStatusText.append(" / ");
@@ -92,13 +118,21 @@ void MainWindow::ResetCardBoard()
 {
     ui->DrawMore->setVisible(true);
     ui->DrawMore->setEnabled(true);
+
+    ui->Stop->setVisible(true);
+    ui->Stop->setEnabled(true);
+
     ui->ActionPerfectText->setVisible(false);
     ui->ActionFailedText->setVisible(false);
+
     ui->AceNoticeText->setVisible(false);
     ui->Ace1->setVisible(false);
     ui->Ace1->setEnabled(false);
     ui->Ace10->setVisible(false);
     ui->Ace10->setEnabled(false);
+
+    ui->ActionMessage->setVisible(false);
+    ui->ActionResultMessage->setVisible(false);
 }
 
 void MainWindow::DrawCard()
@@ -120,21 +154,7 @@ void MainWindow::DrawCard()
             return;
         }
     }
-    if (gameManager->GetPointsInCurrentTurn() > 21)
-    {
-        ui->DrawMore->setVisible(false);
-        ui->DrawMore->setEnabled(false);
-        ui->ActionFailedText->setVisible(true);
-    }
-
-    if (gameManager->GetPointsInCurrentTurn() == 21)
-    {
-        ui->DrawMore->setVisible(false);
-        ui->DrawMore->setEnabled(false);
-        ui->ActionPerfectText->setVisible(true);
-    }
-
-    qDebug() << gameManager->GetPointsInCurrentTurn();
+    CheckCurrentCardPoints();
 }
 
 void MainWindow::AceCardSelection()
@@ -152,7 +172,91 @@ void MainWindow::AceCardSelection()
     ui->Ace10->setVisible(true);
 }
 
+void MainWindow::CheckCurrentCardPoints()
+{
+    if (gameManager->GetPointsInCurrentTurn() < 21)
+    {
+        ResetCardBoard();
+    }
+    else if (gameManager->GetPointsInCurrentTurn() > 21)
+    {
+        PreventDrawing(0);
+    }
+    else
+    {
+        PreventDrawing(1);
+    }
+}
+
+
+// If statusCode is 0, the ui will inform the player of a failed action
+// If statusCode is 1, the ui will inform the player of the perfect action
+void MainWindow::PreventDrawing(int statusCode)
+{
+    if (statusCode == 0)
+    {
+        ui->DrawMore->setVisible(false);
+        ui->DrawMore->setEnabled(false);
+        ui->ActionFailedText->setVisible(true);
+    }
+    if (statusCode == 1)
+    {
+        ui->DrawMore->setVisible(false);
+        ui->DrawMore->setEnabled(false);
+        ui->ActionPerfectText->setVisible(true);
+    }
+}
+
 void MainWindow::on_DrawMore_clicked()
 {
     DrawCard();
+}
+
+void MainWindow::on_Ace1_clicked()
+{
+    gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 1);
+    ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
+    CheckCurrentCardPoints();
+}
+
+void MainWindow::on_Ace10_clicked()
+{
+    gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 10);
+    ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
+    CheckCurrentCardPoints();
+}
+
+void MainWindow::on_Stop_clicked()
+{
+    ResetCardBoard();
+    ui->stackedWidget->setCurrentIndex(4);
+    ui->ActionMessage->setText("YOU USED " + gameManager->GetCurrentAction());
+
+    float actionCounter = 0;
+
+    if (gameManager->GetPointsInCurrentTurn() <= 21)
+    {
+        actionCounter = ((float)gameManager->GetPointsInCurrentTurn() / 10.0f);
+    }
+    else if (gameManager->GetPointsInCurrentTurn() == 21)
+    {
+        actionCounter = 3.0f;
+    }
+
+    ui->ActionResultMessage->setVisible(true);
+
+    if (gameManager->GetCurrentAction() == "SWORD ATTACK")
+    {
+        int inflictedDamage = player->GetSwordDamage() * actionCounter;
+        qDebug() << gameManager->GetPointsInCurrentTurn() << " + " << inflictedDamage << " and " << actionCounter;
+        enemy->DecreaseHealth(inflictedDamage);
+        ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " DAMAGE INFLICTED TO " + enemy->GetName());
+    }
+
+    if (gameManager->GetCurrentAction() == "GUN ATTACK")
+    {
+        int inflictedDamage = player->GetGunDamage() * actionCounter;
+        enemy->DecreaseHealth(inflictedDamage);
+        ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " DAMAGE INFLICTED TO " + enemy->GetName());
+    }
 }
