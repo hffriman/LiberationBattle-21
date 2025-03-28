@@ -10,19 +10,20 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LiberationBattle21)
 {
-    ui->setupUi(this);
-
     deck = new Deck();
     deck->CreateDeck();
 
     player = new Player();
     enemy = new Enemy();
+
     gameManager = new GameManager();
+
+    ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    QApplication::quit();
 }
 
 void MainWindow::on_StartGame_clicked()
@@ -32,23 +33,28 @@ void MainWindow::on_StartGame_clicked()
 
 void MainWindow::on_Quit_clicked()
 {
-    delete ui;
-    this->close();
+    QApplication::quit();
 }
 
-void MainWindow::on_Accept_clicked()
+void MainWindow::on_AcceptGameStart_clicked()
 {
-    player->SetName(ui->playerName->toPlainText());
+    player->ResetPlayer(2000, 4, 400, 450);
+    enemy->ResetEnemy(3000, 500);
+
     ui->stackedWidget->setCurrentIndex(2);
 
+    UpdatePlayerStatus();
     ui->PlayerNameText->setText(player->GetName());
+    ui->PlayerHP->setText((QString::number(player->GetCurrentHealthPoints()) + " / " + QString::number(player->GetFullHealthPoints())));
+    ui->GunStatus->setText(QString::number(player->GetGunsLeft()) + " / " + QString::number(player->GetGunsTotal()));
+    ui->SwordStatus->setText(QString::number(player->GetSwordsLeft()) + " / " + QString::number(player->GetGunsTotal()));
 
-    player->SetImage(ui->Player);
-    enemy->SetImage(ui->Enemy);
+    ui->EnemyName->setText(enemy->GetName());
+    ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
 
+    player->SetSwordsLeft(player->GetSwordsLeft());
     player->SetGunsLeft(player->GetGunsLeft());
     gameManager->SetTotalTurnsPassed(1);
-    UpdatePlayerStatus();
 }
 
 
@@ -97,21 +103,14 @@ void MainWindow::on_WeaponRepairment_clicked()
 
 void MainWindow::UpdatePlayerStatus()
 {
-    gameManager->SetCurrentlyDrawnCards(0);
-    gameManager->SetPointsInCurrentTurn(0);
-    gameManager->SetTotalTurnsPassed(gameManager->GetTotalTurnsPassed() + 1);
+    ui->SwordStatus->setText(QString::number(player->GetSwordsLeft()) + " / " + QString::number(player->GetSwordsTotal()));
+    ui->GunStatus->setText(QString::number(player->GetGunsLeft()) + " / " + QString::number(player->GetGunsTotal()));
+    ui->PlayerHP->setText(QString::number(player->GetCurrentHealthPoints()) + " / " + QString::number(player->GetFullHealthPoints()));
+}
 
-    QString updatedSwordStatusText = *new QString();
-    updatedSwordStatusText.append(QString::number(player->GetSwordsLeft()));
-    updatedSwordStatusText.append(" / ");
-    updatedSwordStatusText.append(QString::number(player->GetSwordsTotal()));
-    ui->SwordStatus->setText(updatedSwordStatusText);
-
-    QString updatedGunStatusText = *new QString();
-    updatedGunStatusText.append(QString::number(player->GetGunsLeft()));
-    updatedGunStatusText.append(" / ");
-    updatedGunStatusText.append((QString::number(player->GetGunsTotal())));
-    ui->GunStatus->setText(updatedGunStatusText);
+void MainWindow::UpdateEnemyStatus()
+{
+    ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
 }
 
 void MainWindow::ResetCardBoard()
@@ -124,8 +123,8 @@ void MainWindow::ResetCardBoard()
 
     ui->ActionPerfectText->setVisible(false);
     ui->ActionFailedText->setVisible(false);
-
     ui->AceNoticeText->setVisible(false);
+
     ui->Ace1->setVisible(false);
     ui->Ace1->setEnabled(false);
     ui->Ace10->setVisible(false);
@@ -137,10 +136,12 @@ void MainWindow::ResetCardBoard()
 
 void MainWindow::DrawCard()
 {
+    ResetCardBoard();
     if (gameManager->GetPointsInCurrentTurn() < 21)
     {
         int randomizedNumber = rand() % 53;
-        Card drawnCard = deck->cards[randomizedNumber];
+        Card drawnCard = *new Card(deck->cards[randomizedNumber]);
+        qDebug() << " card and source: " << drawnCard.GetCardImageSource() << drawnCard.GetCardName();
         QPixmap image (QString(drawnCard.GetCardImageSource()));
         gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + drawnCard.GetCardPoints());
         gameManager->SetCurrentlyDrawnCards(gameManager->GetCurrentlyDrawnCards() + 1);
@@ -164,8 +165,10 @@ void MainWindow::AceCardSelection()
     ui->Stop->setEnabled(false);
     ui->Stop->setVisible(false);
 
-    ui->AceNoticeText->setVisible(true);
+    ui->ActionPerfectText->setVisible(false);
+    ui->ActionFailedText->setVisible(false);
 
+    ui->AceNoticeText->setVisible(true);
     ui->Ace1->setEnabled(true);
     ui->Ace1->setVisible(true);
     ui->Ace10->setEnabled(true);
@@ -193,16 +196,21 @@ void MainWindow::CheckCurrentCardPoints()
 // If statusCode is 1, the ui will inform the player of the perfect action
 void MainWindow::PreventDrawing(int statusCode)
 {
+    ui->DrawMore->setVisible(false);
+    ui->DrawMore->setEnabled(false);
+
+    ui->Stop->setVisible(true);
+    ui->Stop->setEnabled(true);
+
+    ui->ActionPerfectText->setVisible(false);
+    ui->AceNoticeText->setVisible(false);
+
     if (statusCode == 0)
     {
-        ui->DrawMore->setVisible(false);
-        ui->DrawMore->setEnabled(false);
         ui->ActionFailedText->setVisible(true);
     }
     if (statusCode == 1)
     {
-        ui->DrawMore->setVisible(false);
-        ui->DrawMore->setEnabled(false);
         ui->ActionPerfectText->setVisible(true);
     }
 }
@@ -230,11 +238,12 @@ void MainWindow::on_Stop_clicked()
 {
     ResetCardBoard();
     ui->stackedWidget->setCurrentIndex(4);
-    ui->ActionMessage->setText("YOU USED " + gameManager->GetCurrentAction());
+    ui->ActionMessage->setVisible(true);
+    ui->ActionMessage->setText(player->GetName() + " USED " + gameManager->GetCurrentAction());
 
     float actionCounter = 0;
 
-    if (gameManager->GetPointsInCurrentTurn() <= 21)
+    if (gameManager->GetPointsInCurrentTurn() < 21)
     {
         actionCounter = ((float)gameManager->GetPointsInCurrentTurn() / 10.0f);
     }
@@ -259,4 +268,129 @@ void MainWindow::on_Stop_clicked()
         enemy->DecreaseHealth(inflictedDamage);
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " DAMAGE INFLICTED TO " + enemy->GetName());
     }
+
+    if (gameManager->GetCurrentAction() == "LIFE RESTORATION")
+    {
+        QString message = *new QString();
+        int increasedHealth = 500 * actionCounter;
+
+        if ((gameManager->GetPointsInCurrentTurn() < 21))
+        {
+            if ((player->GetCurrentHealthPoints() + increasedHealth) >= (player->GetFullHealthPoints()))
+            {
+                player->SetCurrentHealthPoints(player->GetFullHealthPoints());
+            }
+            else
+            {
+                player->SetCurrentHealthPoints(player->GetCurrentHealthPoints() + increasedHealth);
+            }
+            message = *new QString("PLAYER HEALTH INCREASED BY " + QString::number(increasedHealth) + " POINTS");
+        }
+        else if ((gameManager->GetPointsInCurrentTurn() == 21))
+        {
+            player->SetFullHealthPoints(player->GetFullHealthPoints() * 2);
+            player->SetCurrentHealthPoints(player->GetFullHealthPoints());
+            message = *new QString("PLAYER HEALTH RESTORED AND DOUBLED");
+        }
+        ui->ActionResultMessage->setText(message);
+    }
+
+    if (gameManager->GetCurrentAction() == "WEAPON REPAIRMENT")
+    {
+        int increasedWeapons = 1 * actionCounter;
+        if (gameManager->GetPointsInCurrentTurn() < 21)
+        {
+            if ((player->GetGunsLeft() + increasedWeapons) > (player->GetGunsTotal()))
+            {
+                player->SetGunsLeft(player->GetGunsTotal());
+            }
+            if ((player->GetSwordsLeft() + increasedWeapons) > (player->GetSwordsTotal()))
+            {
+                player->SetSwordsLeft(player->GetSwordsTotal());
+            }
+
+            if ((player->GetGunsLeft() + increasedWeapons) < (player->GetGunsTotal()))
+            {
+                player->SetGunsLeft(player->GetGunsLeft() + increasedWeapons);
+            }
+            if ((player->GetSwordsLeft() + increasedWeapons) < (player->GetSwordsTotal()))
+            {
+                player->SetSwordsLeft(player->GetSwordsLeft() + increasedWeapons);
+            }
+            ui->ActionResultMessage->setText("CAPACITY OF WEAPONS INCREASED BY " + QString::number(increasedWeapons) + " UNITS");
+        }
+        else if (gameManager->GetPointsInCurrentTurn() == 21)
+        {
+            player->SetGunsTotal(player->GetGunsTotal() * 2);
+            player->SetGunsLeft(player->GetGunsTotal());
+            player->SetSwordsTotal(player->GetSwordsTotal() * 2);
+            player->SetSwordsLeft(player->GetSwordsTotal());
+
+            ui->ActionResultMessage->setText("WEAPONS REPAIRED AND LEVELED UP SUCCESSFULLY");
+        }
+        else if (gameManager->GetPointsInCurrentTurn() > 21)
+        {
+            ui->ActionResultMessage->setText("WEAPON REPAIRMENT FAILED");
+        }
+    }
+    UpdatePlayerStatus();
 }
+
+void MainWindow::on_EnemyTurnButton_clicked()
+{
+    if (enemy->GetCurrentHealthPoints() > 0) {
+        ui->stackedWidget->setCurrentIndex(5);
+        ui->EnemyActionMessage->setText(enemy->GetName() + " USED DESTRUCTION MAGIC");
+        player->SetCurrentHealthPoints((player->GetCurrentHealthPoints()) - (enemy->GetDamagePoints()));
+        ui->EnemyActionResultMessage->setText(QString::number(enemy->GetDamagePoints()) + " DAMAGE INFLICTED TO " + player->GetName());
+    }
+    else if (enemy->GetCurrentHealthPoints() <= 0)
+    {
+        on_EndGameTurnButton_clicked();
+    }
+
+    UpdatePlayerStatus();
+}
+
+
+void MainWindow::on_EndGameTurnButton_clicked()
+{
+    gameManager->SetCurrentlyDrawnCards(0);
+    gameManager->SetPointsInCurrentTurn(0);
+    gameManager->SetTotalTurnsPassed(gameManager->GetTotalTurnsPassed() + 1);
+
+    if (player->GetCurrentHealthPoints() > 0 && enemy->GetCurrentHealthPoints() > 0)
+    {
+        ui->stackedWidget->setCurrentIndex(2);
+        ResetCardBoard();
+        UpdatePlayerStatus();
+        UpdateEnemyStatus();
+    }
+    else if (player->GetCurrentHealthPoints() > 0 && enemy->GetCurrentHealthPoints() <= 0)
+    {
+        ui->stackedWidget->setCurrentIndex(6);
+        ui->GameOverHeader->setText("CONGRATULATIONS");
+        ui->GameOverExplanation->setText(player->GetName() + " HAS DEFEATED " + enemy->GetName());
+    }
+    else if (player->GetCurrentHealthPoints() <= 0 && enemy->GetCurrentHealthPoints() > 0)
+    {
+        ui->stackedWidget->setCurrentIndex(6);
+        ui->GameOverHeader->setText("GAME OVER");
+        ui->GameOverExplanation->setText(player->GetName() + " HAS LOST TO " + enemy->GetName());
+        qDebug() << "GAME OVER";
+    }
+}
+
+
+void MainWindow::on_PlayAgain_clicked()
+{
+    on_AcceptGameStart_clicked();
+}
+
+
+
+void MainWindow::on_ExitToMenu_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+

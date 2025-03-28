@@ -3,8 +3,9 @@
 Enemy::Enemy() {
 
     name = "NOSFERATU";
-    healthPoints = 3000.0f;
-    damagePoints = 400.0f;
+    currentHealthPoints = 3000;
+    fullHealthPoints = 3000;
+    damagePoints = 500;
 }
 
 
@@ -18,12 +19,49 @@ QString Enemy::GetName()
     return this->name;
 }
 
+void Enemy::ResetEnemy(int healthPoints, int damage)
+{
+    this->SetCurrentHealthPoints(healthPoints);
+    this->SetFullHealthPoints(healthPoints);
+    this->SetDamagePoints(damage);
+}
+
 void Enemy::SetImage(QWidget* image)
 {
     this->enemyImage = image;
 }
 
+void Enemy::SetCurrentHealthPoints(int points)
+{
+    this->currentHealthPoints = points;
+}
+
+int Enemy::GetCurrentHealthPoints()
+{
+    return this->currentHealthPoints;
+}
+
+void Enemy::SetFullHealthPoints(int points)
+{
+    this->fullHealthPoints = points;
+}
+
+int Enemy::GetFullHealthPoints()
+{
+    return this->fullHealthPoints;
+}
+
+void Enemy::SetDamagePoints(int points)
+{
+    this->damagePoints = points;
+}
+
+int Enemy::GetDamagePoints()
+{
+    return this->damagePoints;
+}
+
 void Enemy::DecreaseHealth(float damage)
 {
-    healthPoints -= damage;
+    currentHealthPoints -= damage;
 }

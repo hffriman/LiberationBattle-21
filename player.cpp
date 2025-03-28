@@ -3,15 +3,15 @@
 Player::Player() {
 
     name = "DOMINIQUE";
-    healthPoints = 2000.0f;
-    swordDamage = 300.0f;
-    gunDamage = 400.0f;
+    currentHealthPoints = 2000;
+    fullHealthPoints = 2000;
+    swordDamage = 400;
+    gunDamage = 450;
     guardPoints = 0;
     swordsTotal = 4;
     swordsLeft = 4;
     gunsTotal = 4;
     gunsLeft = 4;
-
 }
 
 
@@ -25,6 +25,40 @@ QString Player::GetName()
     return this->name;
 }
 
+void Player::ResetPlayer(int healthPoints, int weapons, int swordDamage, int gunDamage)
+{
+    this->SetCurrentHealthPoints(healthPoints);
+    this->SetFullHealthPoints(healthPoints);
+
+    this->SetSwordsLeft(weapons);
+    this->SetSwordsTotal(weapons);
+
+    this->SetGunsLeft(weapons);
+    this->SetGunsTotal(weapons);
+
+    this->SetSwordDamage(swordDamage);
+    this->SetGunDamage(gunDamage);
+}
+
+void Player::SetCurrentHealthPoints(int points)
+{
+    this->currentHealthPoints = points;
+}
+
+int Player::GetCurrentHealthPoints()
+{
+    return this->currentHealthPoints;
+}
+
+void Player::SetFullHealthPoints(int points)
+{
+    this->fullHealthPoints = points;
+}
+
+int Player::GetFullHealthPoints()
+{
+    return this->fullHealthPoints;
+}
 
 int Player::GetSwordDamage()
 {

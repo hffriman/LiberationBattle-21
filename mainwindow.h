@@ -30,13 +30,15 @@ private slots:
 
     void on_Quit_clicked();
 
-    void on_Accept_clicked();
+    void on_AcceptGameStart_clicked();
 
     void on_SwordAttack_clicked();
 
     void on_GunAttack_clicked();
 
     void UpdatePlayerStatus();
+
+    void UpdateEnemyStatus();
 
     void ResetCardBoard();
 
@@ -59,6 +61,14 @@ private slots:
     void on_LifeRestoration_clicked();
 
     void on_WeaponRepairment_clicked();
+
+    void on_EnemyTurnButton_clicked();
+
+    void on_EndGameTurnButton_clicked();
+
+    void on_PlayAgain_clicked();
+
+    void on_ExitToMenu_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

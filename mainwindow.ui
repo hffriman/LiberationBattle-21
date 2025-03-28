@@ -194,6 +194,9 @@
         <pointsize>36</pointsize>
        </font>
       </property>
+      <property name="tabChangesFocus">
+       <bool>true</bool>
+      </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -226,7 +229,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>Name The Player Character</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Accept">
+     <widget class="QPushButton" name="AcceptGameStart">
       <property name="geometry">
        <rect>
         <x>530</x>
@@ -301,7 +304,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="SwordAttack">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>300</x>
         <y>450</y>
         <width>251</width>
         <height>81</height>
@@ -314,7 +317,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="GunAttack">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>300</x>
         <y>550</y>
         <width>251</width>
         <height>81</height>
@@ -327,7 +330,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="WeaponRepairment">
       <property name="geometry">
        <rect>
-        <x>680</x>
+        <x>700</x>
         <y>550</y>
         <width>251</width>
         <height>81</height>
@@ -340,7 +343,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="LifeRestoration">
       <property name="geometry">
        <rect>
-        <x>680</x>
+        <x>700</x>
         <y>450</y>
         <width>251</width>
         <height>81</height>
@@ -371,7 +374,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>70</x>
         <y>450</y>
-        <width>141</width>
+        <width>161</width>
         <height>141</height>
        </rect>
       </property>
@@ -385,7 +388,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="SwordStatus">
       <property name="geometry">
        <rect>
-        <x>530</x>
+        <x>550</x>
         <y>450</y>
         <width>101</width>
         <height>81</height>
@@ -409,7 +412,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="GunStatus">
       <property name="geometry">
        <rect>
-        <x>530</x>
+        <x>550</x>
         <y>550</y>
         <width>101</width>
         <height>81</height>
@@ -435,7 +438,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>50</x>
         <y>410</y>
-        <width>181</width>
+        <width>201</width>
         <height>31</height>
        </rect>
       </property>
@@ -457,15 +460,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="PlayerHP">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>120</x>
         <y>600</y>
-        <width>141</width>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -520,6 +523,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="PlayerHPLabel">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>600</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>HP</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <zorder>Background3</zorder>
      <zorder>CommandGUI</zorder>
      <zorder>Player</zorder>
@@ -535,6 +562,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <zorder>PlayerHP</zorder>
      <zorder>EnemyName</zorder>
      <zorder>EnemyHP</zorder>
+     <zorder>PlayerHPLabel</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
      <widget class="QLabel" name="Player_2">
@@ -934,7 +962,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="Player_3">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>380</x>
         <y>190</y>
         <width>91</width>
         <height>171</height>
@@ -970,9 +998,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>440</y>
+        <y>430</y>
         <width>611</width>
-        <height>111</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -991,7 +1019,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>520</y>
+        <y>480</y>
         <width>611</width>
         <height>111</height>
        </rect>
@@ -1003,6 +1031,317 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="text">
        <string>1000 DAMAGE INFLICTED TO NOSFERATU</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="EnemyTurnButton">
+      <property name="geometry">
+       <rect>
+        <x>1000</x>
+        <y>490</y>
+        <width>121</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CONTINUE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Enemy_3">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_6">
+     <widget class="QLabel" name="Background6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-30</y>
+        <width>1201</width>
+        <height>751</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(204, 65, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CommandGUI_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>410</y>
+        <width>1201</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(148, 162, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="EnemyActionResultMessage">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>480</y>
+        <width>611</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>1000 DAMAGE INFLICTED TO PLAYER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="EndGameTurnButton">
+      <property name="geometry">
+       <rect>
+        <x>1000</x>
+        <y>490</y>
+        <width>121</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CONTINUE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="EnemyActionMessage">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>430</y>
+        <width>611</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ENEMY USED [ACTION]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Player_4">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Enemy_4">
+      <property name="geometry">
+       <rect>
+        <x>760</x>
+        <y>190</y>
+        <width>91</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_7">
+     <widget class="QLabel" name="Background7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-30</y>
+        <width>1201</width>
+        <height>751</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(204, 65, 0)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Player_5">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>190</y>
+        <width>101</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Enemy_5">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>190</y>
+        <width>101</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="GameOverMenu">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>40</y>
+        <width>521</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="GameOverHeader">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>90</y>
+        <width>501</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>21</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GAME OVER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ExitToMenu">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>151</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EXIT TO MENU</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="PlayAgain">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>290</y>
+        <width>151</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PLAY AGAIN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="GameOverExplanation">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>150</y>
+        <width>501</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>DOMINIQUE HAS LOST THE GAME</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
