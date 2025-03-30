@@ -55,5 +55,9 @@
         <file>Images/Buttons/menubutton.png</file>
         <file>Images/Buttons/menu-button-focus.png</file>
         <file>Images/BackgroundImages/name-paper.png</file>
+        <file>Images/BackgroundImages/game_result_window.png</file>
+        <file>Images/BackgroundImages/gameboard.png</file>
+        <file>Images/BackgroundImages/command-gui.png</file>
+        <file>Images/Buttons/menubutton-transparent.png</file>
     </qresource>
 </RCC>

@@ -6,6 +6,7 @@
 #include "enemy.h"
 #include "deck.h"
 #include "gamemanager.h"
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -44,6 +45,8 @@ private slots:
 
     void DrawCard();
 
+    void AdjustWeaponButtons(QPushButton* button, int numberValue);
+
     void AdjustDrawButtons(bool status);
 
     void AdjustDrawStatusMessages(bool status);
@@ -79,6 +82,8 @@ private slots:
     void on_ExitToMenu_clicked();
 
     void on_BackToMenu_clicked();
+
+    void on_GiveUp_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

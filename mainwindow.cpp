@@ -46,16 +46,8 @@ void MainWindow::on_AcceptGameStart_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 
     UpdatePlayerStatus();
-    ui->PlayerNameText->setText(player->GetName());
-    ui->PlayerHP->setText((QString::number(player->GetCurrentHealthPoints()) + " / " + QString::number(player->GetFullHealthPoints())));
-    ui->GunStatus->setText(QString::number(player->GetGunsLeft()) + " / " + QString::number(player->GetGunsTotal()));
-    ui->SwordStatus->setText(QString::number(player->GetSwordsLeft()) + " / " + QString::number(player->GetGunsTotal()));
+    UpdateEnemyStatus();
 
-    ui->EnemyName->setText(enemy->GetName());
-    ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
-
-    player->SetSwordsLeft(player->GetSwordsLeft());
-    player->SetGunsLeft(player->GetGunsLeft());
     gameManager->SetTotalTurnsPassed(1);
 }
 
@@ -102,13 +94,22 @@ void MainWindow::on_WeaponRepairment_clicked()
 
 void MainWindow::UpdatePlayerStatus()
 {
-    ui->SwordStatus->setText(QString::number(player->GetSwordsLeft()) + " / " + QString::number(player->GetSwordsTotal()));
+    player->SetSwordsLeft(player->GetSwordsLeft());
+    player->SetGunsLeft(player->GetGunsLeft());
+
+    ui->PlayerNameText->setText(player->GetName());
+    ui->PlayerHP->setText((QString::number(player->GetCurrentHealthPoints()) + " / " + QString::number(player->GetFullHealthPoints())));
     ui->GunStatus->setText(QString::number(player->GetGunsLeft()) + " / " + QString::number(player->GetGunsTotal()));
-    ui->PlayerHP->setText(QString::number(player->GetCurrentHealthPoints()) + " / " + QString::number(player->GetFullHealthPoints()));
+    ui->SwordStatus->setText(QString::number(player->GetSwordsLeft()) + " / " + QString::number(player->GetGunsTotal()));
+
+    AdjustWeaponButtons(ui->SwordAttack, player->GetSwordsLeft());
+    AdjustWeaponButtons(ui->GunAttack, player->GetGunsLeft());
 }
 
 void MainWindow::UpdateEnemyStatus()
 {
+    ui->EnemyName->setText(enemy->GetName());
+    ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
     ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
 }
 
@@ -126,9 +127,7 @@ void MainWindow::DrawCard()
     if (gameManager->GetPointsInCurrentTurn() < 21)
     {
         int randomizedNumber = rand() % 52;
-        qDebug() << "random number is " << randomizedNumber;
         Card drawnCard = *new Card(deck->cards[randomizedNumber]);
-        qDebug() << " card and source: " << drawnCard.GetCardImageSource() << drawnCard.GetCardName();
         QPixmap image (QString(drawnCard.GetCardImageSource()));
         gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + drawnCard.GetCardPoints());
         gameManager->SetCurrentlyDrawnCards(gameManager->GetCurrentlyDrawnCards() + 1);
@@ -143,6 +142,19 @@ void MainWindow::DrawCard()
         }
     }
     CheckCurrentCardPoints();
+}
+
+
+void MainWindow::AdjustWeaponButtons(QPushButton* button, int valueNumber)
+{
+    if (valueNumber <= 0)
+    {
+        button->setEnabled(false);
+    }
+    else
+    {
+        button->setEnabled(true);
+    }
 }
 
 void MainWindow::AdjustDrawButtons(bool status)
@@ -240,9 +252,7 @@ void MainWindow::on_Ace1_clicked()
 {
     gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 1);
     ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
-
     AdjustAceSelection(false);
-
     CheckCurrentCardPoints();
 }
 
@@ -250,6 +260,7 @@ void MainWindow::on_Ace10_clicked()
 {
     gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 10);
     ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
+    AdjustAceSelection(false);
     CheckCurrentCardPoints();
 }
 
@@ -276,7 +287,6 @@ void MainWindow::on_Stop_clicked()
     if (gameManager->GetCurrentAction() == "SWORD ATTACK")
     {
         int inflictedDamage = player->GetSwordDamage() * actionCounter;
-        qDebug() << gameManager->GetPointsInCurrentTurn() << " + " << inflictedDamage << " and " << actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " damage inflicted to " + enemy->GetName());
     }
@@ -413,3 +423,9 @@ void MainWindow::on_BackToMenu_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
+
+void MainWindow::on_GiveUp_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
