@@ -39,8 +39,8 @@
      <widget class="QLabel" name="GameTitle">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>140</y>
+        <x>300</x>
+        <y>0</y>
         <width>1181</width>
         <height>171</height>
        </rect>
@@ -63,11 +63,33 @@
      <widget class="QPushButton" name="StartGame">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>320</y>
-        <width>200</width>
-        <height>80</height>
+        <x>750</x>
+        <y>180</y>
+        <width>301</width>
+        <height>171</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>15</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;
+	border-image: url(:/Images/Buttons/menubutton.png);
+	background-repeat: none;
+	color: white;
+	font: 15pt &quot;Lucida Bright&quot;;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+    font-size: 25px;
+}</string>
       </property>
       <property name="text">
        <string>START GAME</string>
@@ -76,11 +98,34 @@
      <widget class="QPushButton" name="Quit">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>430</y>
-        <width>200</width>
-        <height>80</height>
+        <x>750</x>
+        <y>420</y>
+        <width>301</width>
+        <height>171</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>15</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;	
+ 	border-image: url(:/Images/Buttons/menubutton.png);
+	background-image: none;
+ 	color: white;
+	font: 15pt &quot;Lucida Bright&quot;;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+	font-size: 25px;
+}
+</string>
       </property>
       <property name="text">
        <string>QUIT</string>
@@ -89,7 +134,7 @@
      <widget class="QLabel" name="Credit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>40</x>
         <y>600</y>
         <width>321</width>
         <height>40</height>
@@ -110,9 +155,9 @@
      <widget class="QLabel" name="Version">
       <property name="geometry">
        <rect>
-        <x>860</x>
-        <y>600</y>
-        <width>321</width>
+        <x>40</x>
+        <y>20</y>
+        <width>191</width>
         <height>40</height>
        </rect>
       </property>
@@ -131,7 +176,7 @@
        <string>Version 0.1</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="Background1">
@@ -140,7 +185,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>30</x>
         <y>10</y>
         <width>1181</width>
         <height>661</height>
@@ -164,35 +209,71 @@
      <zorder>Version</zorder>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QLabel" name="Background2">
+     <widget class="QLabel" name="NameBoard">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>9</y>
-        <width>1181</width>
-        <height>731</height>
+        <x>60</x>
+        <y>-30</y>
+        <width>1071</width>
+        <height>681</height>
        </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0)</string>
+       <string notr="true"/>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Sunken</enum>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/BackgroundImages/name-paper.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
       </property>
      </widget>
-     <widget class="QTextEdit" name="playerName">
+     <widget class="QTextEdit" name="givePlayerNameBox">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>260</y>
-        <width>611</width>
-        <height>101</height>
+        <x>330</x>
+        <y>330</y>
+        <width>521</width>
+        <height>61</height>
        </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
       <property name="font">
        <font>
         <pointsize>36</pointsize>
        </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
       <property name="tabChangesFocus">
        <bool>true</bool>
@@ -205,43 +286,149 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:36pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dominique&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;DOMINIQUE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="PlayerNameHeadline">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>140</y>
-        <width>571</width>
+        <x>10</x>
+        <y>30</y>
+        <width>1181</width>
         <height>111</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>27</pointsize>
+        <family>Lucida Calligraphy</family>
+        <pointsize>-1</pointsize>
+        <italic>true</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255)</string>
+       <string notr="true">font: italic 9pt &quot;Lucida Calligraphy&quot;;
+font-size: 35px;</string>
       </property>
       <property name="text">
-       <string>Name The Player Character</string>
+       <string>Player Name</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="AcceptGameStart">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>390</y>
-        <width>151</width>
-        <height>61</height>
+        <x>920</x>
+        <y>20</y>
+        <width>191</width>
+        <height>111</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>13</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;
+	border-image: url(:/Images/Buttons/menubutton.png);
+	background-repeat: none;
+	color: white;
+    font: 13pt &quot;Lucida Bright&quot;;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+    font-size: 22px;
+}</string>
       </property>
       <property name="text">
        <string>ACCEPT</string>
       </property>
      </widget>
+     <widget class="QLabel" name="PlayerIcon_2">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>130</y>
+        <width>191</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: white;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::TextFormat::RichText</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BackToMenu">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>191</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>15</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;
+	border-image: url(:/Images/Buttons/menubutton.png);
+	background-repeat: none;
+	color: white;
+	font: 15pt &quot;Lucida Bright&quot;;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+    font-size: 30px;
+}</string>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Background">
+      <property name="geometry">
+       <rect>
+        <x>-20</x>
+        <y>-31</y>
+        <width>1241</width>
+        <height>711</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>Background</zorder>
+     <zorder>NameBoard</zorder>
+     <zorder>givePlayerNameBox</zorder>
+     <zorder>PlayerNameHeadline</zorder>
+     <zorder>AcceptGameStart</zorder>
+     <zorder>PlayerIcon_2</zorder>
+     <zorder>BackToMenu</zorder>
     </widget>
     <widget class="QWidget" name="page_3">
      <widget class="QLabel" name="Background3">
@@ -305,10 +492,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>450</y>
+        <y>420</y>
         <width>251</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>SWORD ATTACK</string>
@@ -318,10 +511,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>550</y>
+        <y>540</y>
         <width>251</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>GUN ATTACK</string>
@@ -330,11 +529,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="WeaponRepairment">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>550</y>
-        <width>251</width>
+        <x>740</x>
+        <y>540</y>
+        <width>301</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>WEAPON REPAIRMENT</string>
@@ -343,11 +548,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="LifeRestoration">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>450</y>
-        <width>251</width>
+        <x>740</x>
+        <y>420</y>
+        <width>301</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>LIFE RESTORATION</string>
@@ -388,22 +599,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="SwordStatus">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>450</y>
-        <width>101</width>
+        <x>540</x>
+        <y>420</y>
+        <width>131</width>
         <height>81</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <family>Lucida Bright</family>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
       <property name="text">
-       <string/>
+       <string>12 / 12</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -412,22 +624,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="GunStatus">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>550</y>
-        <width>101</width>
+        <x>540</x>
+        <y>540</y>
+        <width>131</width>
         <height>81</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <family>Lucida Bright</family>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
       <property name="text">
-       <string/>
+       <string>12 / 12</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -444,6 +657,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -460,14 +674,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="PlayerHP">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>110</x>
         <y>600</y>
-        <width>121</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>10</pointsize>
        </font>
       </property>
@@ -475,7 +690,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>200 / 200</string>
+       <string>3000 / 3000</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -492,6 +707,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>15</pointsize>
        </font>
       </property>
@@ -505,14 +721,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="EnemyHP">
       <property name="geometry">
        <rect>
-        <x>920</x>
+        <x>900</x>
         <y>130</y>
-        <width>171</width>
+        <width>211</width>
         <height>51</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>15</pointsize>
        </font>
       </property>
@@ -528,12 +745,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>60</x>
         <y>600</y>
-        <width>51</width>
+        <width>41</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>10</pointsize>
        </font>
       </property>
@@ -671,14 +889,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="TotalPointsLabel">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>490</x>
         <y>420</y>
-        <width>151</width>
+        <width>181</width>
         <height>51</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -692,14 +911,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="Action">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>380</x>
         <y>40</y>
-        <width>171</width>
+        <width>311</width>
         <height>71</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -707,16 +927,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>ACTION</string>
+       <string>GUN ATTACK</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="DrawnCardText">
       <property name="geometry">
        <rect>
-        <x>650</x>
+        <x>670</x>
         <y>40</y>
         <width>171</width>
         <height>71</height>
@@ -724,6 +944,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -740,14 +961,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="TotalPointsValue">
       <property name="geometry">
        <rect>
-        <x>660</x>
+        <x>670</x>
         <y>420</y>
-        <width>51</width>
+        <width>71</width>
         <height>51</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -755,7 +977,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>37</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -769,9 +991,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>370</x>
         <y>530</y>
-        <width>131</width>
+        <width>161</width>
         <height>71</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>DRAW MORE</string>
@@ -780,11 +1008,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="Stop">
       <property name="geometry">
        <rect>
-        <x>720</x>
+        <x>690</x>
         <y>530</y>
-        <width>131</width>
+        <width>161</width>
         <height>71</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>STOP</string>
@@ -804,6 +1038,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -828,6 +1063,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -853,6 +1089,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <height>71</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>10</string>
       </property>
@@ -869,6 +1111,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <height>71</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>1</string>
       </property>
@@ -884,6 +1132,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -891,7 +1140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color:rgb(255, 255, 255)</string>
       </property>
       <property name="text">
-       <string>YOU GOT AN ACE. CHOOSE ITS VALUE!</string>
+       <string>YOU GOT AN ACE. CHOOSE ITS VALUE</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -900,7 +1149,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="DrawnCardNumber">
       <property name="geometry">
        <rect>
-        <x>760</x>
+        <x>780</x>
         <y>40</y>
         <width>91</width>
         <height>71</height>
@@ -908,6 +1157,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -915,7 +1165,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -998,13 +1248,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>430</y>
+        <y>460</y>
         <width>611</width>
         <height>71</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>17</pointsize>
        </font>
       </property>
@@ -1019,13 +1270,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>480</y>
+        <y>510</y>
         <width>611</width>
         <height>111</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>17</pointsize>
        </font>
       </property>
@@ -1040,10 +1292,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>1000</x>
-        <y>490</y>
-        <width>121</width>
-        <height>71</height>
+        <y>540</y>
+        <width>151</width>
+        <height>91</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>CONTINUE</string>
@@ -1109,13 +1367,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>480</y>
+        <y>510</y>
         <width>611</width>
         <height>111</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>17</pointsize>
        </font>
       </property>
@@ -1130,10 +1389,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>1000</x>
-        <y>490</y>
-        <width>121</width>
-        <height>71</height>
+        <y>540</y>
+        <width>151</width>
+        <height>91</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>CONTINUE</string>
@@ -1143,13 +1408,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>430</y>
+        <y>460</y>
         <width>611</width>
         <height>71</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>17</pointsize>
        </font>
       </property>
@@ -1284,6 +1550,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>21</pointsize>
        </font>
       </property>
@@ -1300,11 +1567,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="ExitToMenu">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>520</x>
         <y>440</y>
-        <width>151</width>
+        <width>191</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>EXIT TO MENU</string>
@@ -1313,11 +1586,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QPushButton" name="PlayAgain">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>520</x>
         <y>290</y>
-        <width>151</width>
+        <width>191</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>PLAY AGAIN</string>
@@ -1334,6 +1613,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="font">
        <font>
+        <family>Lucida Bright</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -1341,7 +1621,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>DOMINIQUE HAS LOST THE GAME</string>
+       <string>DOMINIQUE HAS LOST THE BATTLE</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>

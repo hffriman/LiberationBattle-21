@@ -44,11 +44,19 @@ private slots:
 
     void DrawCard();
 
+    void AdjustDrawButtons(bool status);
+
+    void AdjustDrawStatusMessages(bool status);
+
+    void AdjustActionMessages(bool status);
+
     void CheckCurrentCardPoints();
 
     void PreventDrawing(int statusCode);
 
     void AceCardSelection();
+
+    void AdjustAceSelection(bool status);
 
     void on_DrawMore_clicked();
 
@@ -69,6 +77,8 @@ private slots:
     void on_PlayAgain_clicked();
 
     void on_ExitToMenu_clicked();
+
+    void on_BackToMenu_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

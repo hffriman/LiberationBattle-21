@@ -52,5 +52,8 @@
         <file>Images/Cards/Spade-J.png</file>
         <file>Images/Cards/Spade-K.png</file>
         <file>Images/Cards/Spade-Q.png</file>
+        <file>Images/Buttons/menubutton.png</file>
+        <file>Images/Buttons/menu-button-focus.png</file>
+        <file>Images/BackgroundImages/name-paper.png</file>
     </qresource>
 </RCC>
