@@ -370,7 +370,7 @@ void MainWindow::on_EnemyTurnButton_clicked()
 {
     if (enemy->GetCurrentHealthPoints() > 0) {
         ui->stackedWidget->setCurrentIndex(5);
-        ui->EnemyActionMessage->setText(enemy->GetName() + " used DESTRUCTION MAGIC");
+        ui->EnemyActionMessage->setText(enemy->GetName() + " used DESTRUCTION RAY");
         player->SetCurrentHealthPoints((player->GetCurrentHealthPoints()) - (enemy->GetDamagePoints()));
         ui->EnemyActionResultMessage->setText(QString::number(enemy->GetDamagePoints()) + " damage inflicted to " + player->GetName());
     }

@@ -59,5 +59,13 @@
         <file>Images/BackgroundImages/gameboard.png</file>
         <file>Images/BackgroundImages/command-gui.png</file>
         <file>Images/Buttons/menubutton-transparent.png</file>
+        <file>Images/Characters/dominique-profile.png</file>
+        <file>Images/Characters/dominique-profile-closeup.png</file>
+        <file>Images/BackgroundImages/background-art.png</file>
+        <file>Images/BackgroundImages/background-part-1.png</file>
+        <file>Images/BackgroundImages/background-part-2.png</file>
+        <file>Images/BackgroundImages/background-art-expanded.png</file>
+        <file>Images/BackgroundImages/battle-ground.png</file>
+        <file>Images/Characters/dominque-new-design.png</file>
     </qresource>
 </RCC>
