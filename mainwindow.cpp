@@ -37,8 +37,8 @@ void MainWindow::on_Quit_clicked()
 }
 
 void MainWindow::on_AcceptGameStart_clicked()
-{   
-    player->ResetPlayer(2000, 4, 400, 450);
+{
+    player->ResetPlayer(2000, 4, 400, 450, 480, 1);
     enemy->ResetEnemy(3000, 500);
 
     player->SetName(ui->givePlayerNameBox->toPlainText());
@@ -301,7 +301,7 @@ void MainWindow::on_Stop_clicked()
     if (gameManager->GetCurrentAction() == "LIFE RESTORATION")
     {
         QString message = *new QString();
-        int increasedHealth = 495 * actionCounter;
+        int increasedHealth = player->GetHpRestorePoints() * actionCounter;
 
         if ((gameManager->GetPointsInCurrentTurn() < 21))
         {
@@ -326,7 +326,7 @@ void MainWindow::on_Stop_clicked()
 
     if (gameManager->GetCurrentAction() == "WEAPON REPAIRMENT")
     {
-        int increasedWeapons = 1 * actionCounter;
+        int increasedWeapons = player->GetWeaponRepairPoints() * actionCounter;
         if (gameManager->GetPointsInCurrentTurn() < 21)
         {
             if ((player->GetGunsLeft() + increasedWeapons) > (player->GetGunsTotal()))

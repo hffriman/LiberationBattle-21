@@ -11,7 +11,7 @@ public:
     void SetName(QString finalName);
     QString GetName();
 
-    void ResetPlayer(int healthPoints, int weapons, int swordDamage, int gunDamage);
+    void ResetPlayer(int healthPoints, int weapons, int swordDamage, int gunDamage, int healthRestorePoints, int weaponRepairPoints);
 
     void SetSwordsLeft(int value);
     int GetSwordsLeft();
@@ -39,8 +39,11 @@ public:
     void SetGunDamage(int damage);
     int GetGunDamage();
 
-    void SetGuardPoints(int points);
-    int GetGuardPoints();
+    void SetHpRestorePoints(int points);
+    int GetHpRestorePoints();
+
+    void SetWeaponRepairPoints(int points);
+    int GetWeaponRepairPoints();
 
 private:
     QString name;
@@ -48,7 +51,8 @@ private:
     int fullHealthPoints;
     int swordDamage;
     int gunDamage;
-    int guardPoints;
+    int hpRestorePoints;
+    int weaponRepairPoints;
     QWidget* playerImage;
     int swordsTotal;
     int swordsLeft;

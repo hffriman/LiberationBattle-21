@@ -1,5 +1,11 @@
 #include "gamemanager.h"
 
+/* GameManager:
+ * - Handles the game-related data, such as:
+ *   1) the number of cards that the player has drawn on their current turn
+ *   2) the total number of turns the player has taken in the game
+ *   3) the points that the player has gotten from the cards on their current turn
+*/
 GameManager::GameManager() {
     currentlyDrawnCards = 0;
     totalTurnsPassed = 0;

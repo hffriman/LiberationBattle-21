@@ -1,5 +1,13 @@
 #include "player.h"
 
+/* Player:
+ * - Handles the player-related data, such as:
+ *   1) Player character's name ("DOMINIQUE" being the default name)
+ *   2) Player's current health points and full health points
+ *   3) Player's damage points inflicted by SwordAttack and GunAttack
+ *   4) Player's health restore and weapon repairment points (will be multiplied based on the card game results)
+ *   5) Player's sword and gun resources (as well as their current maximum limits)
+ */
 Player::Player() {
 
     name = "DOMINIQUE";
@@ -7,7 +15,8 @@ Player::Player() {
     fullHealthPoints = 2000;
     swordDamage = 400;
     gunDamage = 450;
-    guardPoints = 0;
+    hpRestorePoints = 480;
+    weaponRepairPoints = 1;
     swordsTotal = 4;
     swordsLeft = 4;
     gunsTotal = 4;
@@ -25,7 +34,8 @@ QString Player::GetName()
     return this->name;
 }
 
-void Player::ResetPlayer(int healthPoints, int weapons, int swordDamage, int gunDamage)
+// Used to initialize (or reset) the player's overall resources and stats
+void Player::ResetPlayer(int healthPoints, int weapons, int swordDamage, int gunDamage, int hpRestorePoints, int weaponRepairPoints)
 {
     this->SetCurrentHealthPoints(healthPoints);
     this->SetFullHealthPoints(healthPoints);
@@ -38,6 +48,8 @@ void Player::ResetPlayer(int healthPoints, int weapons, int swordDamage, int gun
 
     this->SetSwordDamage(swordDamage);
     this->SetGunDamage(gunDamage);
+    this->SetHpRestorePoints(hpRestorePoints);
+    this->SetWeaponRepairPoints(weaponRepairPoints);
 }
 
 void Player::SetCurrentHealthPoints(int points)
@@ -80,15 +92,26 @@ void Player::SetGunDamage(int damage)
     this->gunDamage = damage;
 }
 
-int Player::GetGuardPoints()
+int Player::GetHpRestorePoints()
 {
-    return this->guardPoints;
+    return this->hpRestorePoints;
 }
 
-void Player::SetGuardPoints(int points)
+void Player::SetHpRestorePoints(int points)
 {
-    this->guardPoints = points;
+    this->hpRestorePoints = points;
 }
+
+int Player::GetWeaponRepairPoints()
+{
+    return this->weaponRepairPoints;
+}
+
+void Player::SetWeaponRepairPoints(int points)
+{
+    this->weaponRepairPoints = points;
+}
+
 
 int Player::GetSwordsTotal()
 {
