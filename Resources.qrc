@@ -59,8 +59,6 @@
         <file>Images/BackgroundImages/gameboard.png</file>
         <file>Images/BackgroundImages/command-gui.png</file>
         <file>Images/Buttons/menubutton-transparent.png</file>
-        <file>Images/Characters/dominique-profile.png</file>
-        <file>Images/Characters/dominique-profile-closeup.png</file>
         <file>Images/BackgroundImages/background-art.png</file>
         <file>Images/BackgroundImages/background-part-1.png</file>
         <file>Images/BackgroundImages/background-part-2.png</file>
@@ -79,5 +77,8 @@
         <file>Images/Characters/dominique-repair-prepare.png</file>
         <file>Images/Characters/dominque-new-design-winning.png</file>
         <file>Images/Characters/dominique-damage.png</file>
+        <file>Images/Characters/nosferatu_attack.png</file>
+        <file>Images/Characters/nosferatu_damage.png</file>
+        <file>Images/Characters/nosferatu_idle.png</file>
     </qresource>
 </RCC>

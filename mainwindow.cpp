@@ -299,6 +299,7 @@ void MainWindow::on_Stop_clicked()
         int inflictedDamage = player->GetSwordDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-sword-slash.png"));
+        ui->Enemy_Phase3->setPixmap(QPixmap(":/Images/Characters/nosferatu_damage.png"));
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " damage inflicted to " + enemy->GetName());
     }
 
@@ -307,6 +308,7 @@ void MainWindow::on_Stop_clicked()
         int inflictedDamage = player->GetGunDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-gun-shoot"));
+        ui->Enemy_Phase3->setPixmap(QPixmap(":/Images/Characters/nosferatu_damage.png"));
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " damage inflicted to " + enemy->GetName());
     }
 
@@ -334,6 +336,7 @@ void MainWindow::on_Stop_clicked()
             message = *new QString("Health fully restored and multiplied");
         }
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-health-drink.png"));
+        ui->Enemy_Phase3->setPixmap(QPixmap(":/Images/Characters/nosferatu_idle.png"));
         ui->ActionResultMessage->setText(message);
     }
 
@@ -370,6 +373,7 @@ void MainWindow::on_Stop_clicked()
             ui->ActionResultMessage->setText("Weapons repaired and leveled up successfully");
         }
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-repair-complete.png"));
+        ui->Enemy_Phase3->setPixmap(QPixmap(":/Images/Characters/nosferatu_idle.png"));
     }
     AdjustActionMessages(true);
     UpdatePlayerStatus();

@@ -235,10 +235,10 @@ QPushButton:hover {
      <zorder>Background1_2</zorder>
      <zorder>Background1</zorder>
      <zorder>GameTitle</zorder>
-     <zorder>StartGame</zorder>
      <zorder>Quit</zorder>
      <zorder>Credit</zorder>
      <zorder>Version</zorder>
+     <zorder>StartGame</zorder>
     </widget>
     <widget class="QWidget" name="page_2">
      <widget class="QLabel" name="NameBoard">
@@ -461,9 +461,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>130</y>
-        <width>181</width>
-        <height>381</height>
+        <y>120</y>
+        <width>211</width>
+        <height>401</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -482,13 +482,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="Enemy">
+     <widget class="QLabel" name="Enemy_Phase1">
       <property name="geometry">
        <rect>
-        <x>880</x>
-        <y>140</y>
-        <width>181</width>
-        <height>381</height>
+        <x>660</x>
+        <y>40</y>
+        <width>651</width>
+        <height>551</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -504,7 +504,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <enum>Qt::TextFormat::RichText</enum>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resources.qrc">:/Images/Characters/dominique-idle.png</pixmap>
+       <pixmap resource="Resources.qrc">:/Images/Characters/nosferatu_idle.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -945,7 +945,7 @@ QPushButton:hover {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(148, 0, 212)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1003,7 +1003,7 @@ QPushButton:hover {
      </widget>
      <zorder>BattleGround</zorder>
      <zorder>Player_Phase1</zorder>
-     <zorder>Enemy</zorder>
+     <zorder>Enemy_Phase1</zorder>
      <zorder>CommandGUI</zorder>
      <zorder>SwordAttack</zorder>
      <zorder>GunAttack</zorder>
@@ -1026,9 +1026,9 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>60</y>
-        <width>331</width>
-        <height>481</height>
+        <y>40</y>
+        <width>351</width>
+        <height>521</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1047,23 +1047,29 @@ QPushButton:hover {
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="Enemy_2">
+     <widget class="QLabel" name="Enemy_Phase2">
       <property name="geometry">
        <rect>
-        <x>990</x>
-        <y>190</y>
-        <width>91</width>
-        <height>171</height>
+        <x>660</x>
+        <y>40</y>
+        <width>651</width>
+        <height>551</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/nosferatu_idle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="Background4">
@@ -1076,7 +1082,7 @@ QPushButton:hover {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(148, 0, 212);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1505,7 +1511,7 @@ border-radius: 30px 30px 30px 30px;</string>
      </widget>
      <zorder>BattleGround_2</zorder>
      <zorder>Background4</zorder>
-     <zorder>Enemy_2</zorder>
+     <zorder>Enemy_Phase2</zorder>
      <zorder>Player_Phase2</zorder>
      <zorder>CardBoard</zorder>
      <zorder>DrawMore</zorder>
@@ -1527,9 +1533,9 @@ border-radius: 30px 30px 30px 30px;</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>100</y>
+        <y>110</y>
         <width>851</width>
-        <height>421</height>
+        <height>441</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1656,17 +1662,17 @@ QPushButton:hover {
        <string>CONTINUE</string>
       </property>
      </widget>
-     <widget class="QLabel" name="Enemy_3">
+     <widget class="QLabel" name="Enemy_Phase3">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>190</y>
-        <width>91</width>
-        <height>171</height>
+        <x>520</x>
+        <y>20</y>
+        <width>681</width>
+        <height>571</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1674,8 +1680,14 @@ QPushButton:hover {
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
       </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/nosferatu_idle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QLabel" name="Background4_2">
+     <widget class="QLabel" name="Background3">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1685,7 +1697,7 @@ QPushButton:hover {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(148, 0, 212);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1726,13 +1738,13 @@ QPushButton:hover {
       </property>
      </widget>
      <zorder>BattleGround_3</zorder>
+     <zorder>Enemy_Phase3</zorder>
      <zorder>Player_Phase3</zorder>
      <zorder>CommandGUI_2</zorder>
      <zorder>ActionResultMessage</zorder>
      <zorder>ActionMessage</zorder>
      <zorder>EnemyTurnButton</zorder>
-     <zorder>Enemy_3</zorder>
-     <zorder>Background4_2</zorder>
+     <zorder>Background3</zorder>
     </widget>
     <widget class="QWidget" name="page_6">
      <widget class="QLabel" name="CommandGUI_3">
@@ -1840,10 +1852,10 @@ QPushButton:hover {
      <widget class="QLabel" name="Player_Phase4">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>100</y>
-        <width>351</width>
-        <height>421</height>
+        <x>110</x>
+        <y>80</y>
+        <width>381</width>
+        <height>441</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -1865,17 +1877,17 @@ QPushButton:hover {
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="Enemy_4">
+     <widget class="QLabel" name="Enemy_Phase4">
       <property name="geometry">
        <rect>
-        <x>710</x>
-        <y>190</y>
-        <width>91</width>
-        <height>171</height>
+        <x>390</x>
+        <y>20</y>
+        <width>801</width>
+        <height>561</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1883,8 +1895,14 @@ QPushButton:hover {
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
       </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/nosferatu_attack.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QLabel" name="Background_3">
+     <widget class="QLabel" name="Background_4">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1894,7 +1912,7 @@ QPushButton:hover {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(148, 0, 212)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1934,14 +1952,14 @@ QPushButton:hover {
        <bool>true</bool>
       </property>
      </widget>
+     <zorder>Background_4</zorder>
      <zorder>BattleGround_4</zorder>
-     <zorder>Enemy_4</zorder>
      <zorder>Player_Phase4</zorder>
+     <zorder>Enemy_Phase4</zorder>
      <zorder>CommandGUI_3</zorder>
-     <zorder>EnemyActionResultMessage</zorder>
      <zorder>EndGameTurnButton</zorder>
      <zorder>EnemyActionMessage</zorder>
-     <zorder>Background_3</zorder>
+     <zorder>EnemyActionResultMessage</zorder>
     </widget>
     <widget class="QWidget" name="page_7">
      <widget class="QLabel" name="Background7">
