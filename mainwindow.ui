@@ -1025,10 +1025,10 @@ QPushButton:hover {
      <widget class="QLabel" name="Player_Phase2">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>80</x>
         <y>60</y>
-        <width>231</width>
-        <height>451</height>
+        <width>331</width>
+        <height>481</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1481,7 +1481,7 @@ border-radius: 30px 30px 30px 30px;</string>
      <widget class="QLabel" name="BattleGround_2">
       <property name="geometry">
        <rect>
-        <x>-30</x>
+        <x>-20</x>
         <y>90</y>
         <width>1221</width>
         <height>601</height>
@@ -1505,31 +1505,31 @@ border-radius: 30px 30px 30px 30px;</string>
      </widget>
      <zorder>BattleGround_2</zorder>
      <zorder>Background4</zorder>
-     <zorder>CardBoard</zorder>
      <zorder>Enemy_2</zorder>
      <zorder>Player_Phase2</zorder>
-     <zorder>TotalPointsLabel</zorder>
-     <zorder>Action</zorder>
-     <zorder>DrawnCardText</zorder>
-     <zorder>TotalPointsValue</zorder>
+     <zorder>CardBoard</zorder>
      <zorder>DrawMore</zorder>
+     <zorder>DrawnCardNumber</zorder>
+     <zorder>DrawnCardText</zorder>
      <zorder>Stop</zorder>
      <zorder>Card</zorder>
-     <zorder>ActionPerfectText</zorder>
      <zorder>ActionFailedText</zorder>
+     <zorder>ActionPerfectText</zorder>
+     <zorder>Action</zorder>
+     <zorder>AceNoticeText</zorder>
      <zorder>Ace10</zorder>
      <zorder>Ace1</zorder>
-     <zorder>AceNoticeText</zorder>
-     <zorder>DrawnCardNumber</zorder>
+     <zorder>TotalPointsLabel</zorder>
+     <zorder>TotalPointsValue</zorder>
     </widget>
     <widget class="QWidget" name="page_5">
      <widget class="QLabel" name="Player_Phase3">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>120</y>
-        <width>861</width>
-        <height>401</height>
+        <x>40</x>
+        <y>100</y>
+        <width>851</width>
+        <height>421</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1542,7 +1542,7 @@ border-radius: 30px 30px 30px 30px;</string>
        <enum>Qt::TextFormat::RichText</enum>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resources.qrc">:/Images/Characters/dominique-gun-shoot.png</pixmap>
+       <pixmap resource="Resources.qrc">:/Images/Characters/dominique-repair-complete.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1703,7 +1703,7 @@ QPushButton:hover {
      <widget class="QLabel" name="BattleGround_3">
       <property name="geometry">
        <rect>
-        <x>-30</x>
+        <x>-20</x>
         <y>90</y>
         <width>1221</width>
         <height>601</height>
@@ -1840,14 +1840,17 @@ QPushButton:hover {
      <widget class="QLabel" name="Player_Phase4">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>190</y>
-        <width>91</width>
-        <height>171</height>
+        <x>190</x>
+        <y>100</y>
+        <width>351</width>
+        <height>421</height>
        </rect>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -1855,11 +1858,17 @@ QPushButton:hover {
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
       </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/dominique-damage.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="Enemy_4">
       <property name="geometry">
        <rect>
-        <x>760</x>
+        <x>710</x>
         <y>190</y>
         <width>91</width>
         <height>171</height>
@@ -1903,7 +1912,7 @@ QPushButton:hover {
      <widget class="QLabel" name="BattleGround_4">
       <property name="geometry">
        <rect>
-        <x>-30</x>
+        <x>-20</x>
         <y>90</y>
         <width>1221</width>
         <height>601</height>
@@ -1926,11 +1935,11 @@ QPushButton:hover {
       </property>
      </widget>
      <zorder>BattleGround_4</zorder>
+     <zorder>Enemy_4</zorder>
+     <zorder>Player_Phase4</zorder>
      <zorder>CommandGUI_3</zorder>
      <zorder>EnemyActionResultMessage</zorder>
      <zorder>EndGameTurnButton</zorder>
-     <zorder>Player_Phase4</zorder>
-     <zorder>Enemy_4</zorder>
      <zorder>EnemyActionMessage</zorder>
      <zorder>Background_3</zorder>
     </widget>
@@ -1945,7 +1954,7 @@ QPushButton:hover {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(204, 65, 0)</string>
+       <string notr="true">background-color:rgb(125, 0, 125)</string>
       </property>
       <property name="text">
        <string/>
@@ -1957,14 +1966,18 @@ QPushButton:hover {
      <widget class="QLabel" name="Player_Phase5">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>150</y>
-        <width>201</width>
-        <height>341</height>
+        <x>30</x>
+        <y>130</y>
+        <width>371</width>
+        <height>311</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
+       <string notr="true">background-color:rgb(255, 255, 255);
+border-style: solid;
+border-width: 10px;
+border-color: rgb(207, 207, 75);
+border-radius: 20px;</string>
       </property>
       <property name="text">
        <string/>
@@ -1972,33 +1985,20 @@ QPushButton:hover {
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
       </property>
-     </widget>
-     <widget class="QLabel" name="Enemy_5">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>150</y>
-        <width>201</width>
-        <height>341</height>
-       </rect>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/dominque-new-design-winning.png</pixmap>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::TextFormat::RichText</enum>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="GameOverMenu">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>90</y>
-        <width>691</width>
-        <height>461</height>
+        <x>430</x>
+        <y>40</y>
+        <width>751</width>
+        <height>531</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -2017,12 +2017,12 @@ QPushButton:hover {
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="GameOverHeader">
+     <widget class="QLabel" name="CongratulationsHeader">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>200</y>
-        <width>501</width>
+        <x>480</x>
+        <y>170</y>
+        <width>631</width>
         <height>71</height>
        </rect>
       </property>
@@ -2037,7 +2037,7 @@ QPushButton:hover {
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>GAME OVER</string>
+       <string>CONGRATULATIONS</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2046,7 +2046,7 @@ QPushButton:hover {
      <widget class="QPushButton" name="ExitToMenu">
       <property name="geometry">
        <rect>
-        <x>650</x>
+        <x>840</x>
         <y>350</y>
         <width>231</width>
         <height>91</height>
@@ -2078,7 +2078,7 @@ QPushButton:hover {
      <widget class="QPushButton" name="PlayAgain">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>520</x>
         <y>350</y>
         <width>231</width>
         <height>91</height>
@@ -2107,12 +2107,12 @@ QPushButton:hover {
        <string>PLAY AGAIN</string>
       </property>
      </widget>
-     <widget class="QLabel" name="GameOverExplanation">
+     <widget class="QLabel" name="GameSuccessExplanation">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>260</y>
-        <width>501</width>
+        <x>490</x>
+        <y>220</y>
+        <width>611</width>
         <height>71</height>
        </rect>
       </property>
@@ -2127,10 +2127,205 @@ QPushButton:hover {
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>DOMINIQUE HAS LOST THE BATTLE</string>
+       <string>YOU HAVE DEFEATED NOSFERATU</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ClearedInTurns">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>270</y>
+        <width>611</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>14</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>IN 10 TURNS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Player_Name_FinalPhase">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>450</y>
+        <width>391</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Calligraphy</family>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;</string>
+      </property>
+      <property name="text">
+       <string>DOMINIQUE</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <zorder>Background7</zorder>
+     <zorder>GameOverMenu</zorder>
+     <zorder>Player_Phase5</zorder>
+     <zorder>CongratulationsHeader</zorder>
+     <zorder>ExitToMenu</zorder>
+     <zorder>PlayAgain</zorder>
+     <zorder>GameSuccessExplanation</zorder>
+     <zorder>ClearedInTurns</zorder>
+     <zorder>Player_Name_FinalPhase</zorder>
+    </widget>
+    <widget class="QWidget" name="page_8">
+     <widget class="QLabel" name="GameOverBG">
+      <property name="geometry">
+       <rect>
+        <x>-9</x>
+        <y>-11</y>
+        <width>1571</width>
+        <height>751</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: black;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="GameOverHeader">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>110</y>
+        <width>1201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>30</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GAME OVER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="GameOverExplanation">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>250</y>
+        <width>1201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>21</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>YOU HAVE LOST THE BATTLE</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GameOverTryAgain">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>410</y>
+        <width>231</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;
+	border-image: url(:/Images/Buttons/menubutton.png);
+	background-repeat: none;
+	color: white;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+    font-size: 22px;
+}</string>
+      </property>
+      <property name="text">
+       <string>TRY AGAIN</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="GameOverGiveUp">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>410</y>
+        <width>231</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Bright</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: transparent;
+	border-image: url(:/Images/Buttons/menubutton.png);
+	background-repeat: none;
+	color: white;
+}
+
+QPushButton:hover {
+	border-image: url(:/Images/Buttons/menu-button-focus.png);
+    font-size: 22px;
+}</string>
+      </property>
+      <property name="text">
+       <string>GIVE UP</string>
       </property>
      </widget>
     </widget>

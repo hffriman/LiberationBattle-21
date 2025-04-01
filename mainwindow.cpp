@@ -92,6 +92,7 @@ void MainWindow::on_WeaponRepairment_clicked()
     gameManager->SetCurrentAction("WEAPON REPAIRMENT");
     ui->stackedWidget->setCurrentIndex(3);
     ui->Action->setText(gameManager->GetCurrentAction());
+    ui->Player_Phase2->setPixmap(QPixmap(":/Images/Characters/dominique-repair-prepare.png"));
     DrawCard();
 }
 
@@ -297,6 +298,7 @@ void MainWindow::on_Stop_clicked()
     {
         int inflictedDamage = player->GetSwordDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
+        ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-sword-slash.png"));
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " damage inflicted to " + enemy->GetName());
     }
 
@@ -367,10 +369,7 @@ void MainWindow::on_Stop_clicked()
             player->SetSwordsLeft(player->GetSwordsTotal());
             ui->ActionResultMessage->setText("Weapons repaired and leveled up successfully");
         }
-        else if (gameManager->GetPointsInCurrentTurn() > 21)
-        {
-            ui->ActionResultMessage->setText("Weapon repairment failed");
-        }
+        ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-repair-complete.png"));
     }
     AdjustActionMessages(true);
     UpdatePlayerStatus();
@@ -408,14 +407,12 @@ void MainWindow::on_EndGameTurnButton_clicked()
     else if (player->GetCurrentHealthPoints() > 0 && enemy->GetCurrentHealthPoints() <= 0)
     {
         ui->stackedWidget->setCurrentIndex(6);
-        ui->GameOverHeader->setText("CONGRATULATIONS");
-        ui->GameOverExplanation->setText(player->GetName() + " has defeated " + enemy->GetName());
+        ui->Player_Name_FinalPhase->setText(player->GetName());
+        ui->ClearedInTurns->setText("IN " + QString::number(gameManager->GetTotalTurnsPassed()) + " TURNS");
     }
     else if (player->GetCurrentHealthPoints() <= 0 && enemy->GetCurrentHealthPoints() > 0)
     {
-        ui->stackedWidget->setCurrentIndex(6);
-        ui->GameOverHeader->setText("GAME OVER");
-        ui->GameOverExplanation->setText(player->GetName() + " has lost to " + enemy->GetName());
+        ui->stackedWidget->setCurrentIndex(7);
     }
 }
 
@@ -435,6 +432,16 @@ void MainWindow::on_BackToMenu_clicked()
 }
 
 void MainWindow::on_GiveUp_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_GameOverTryAgain_clicked()
+{
+    on_AcceptGameStart_clicked();
+}
+
+void MainWindow::on_GameOverGiveUp_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }

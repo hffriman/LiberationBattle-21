@@ -85,6 +85,10 @@ private slots:
 
     void on_GiveUp_clicked();
 
+    void on_GameOverTryAgain_clicked();
+
+    void on_GameOverGiveUp_clicked();
+
 private:
     Ui::LiberationBattle21 *ui;
 };

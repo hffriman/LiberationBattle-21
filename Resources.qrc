@@ -75,5 +75,9 @@
         <file>Images/Characters/dominique-health-drink.png</file>
         <file>Images/Characters/dominique-sword-prepare.png</file>
         <file>Images/Characters/dominique-sword-slash.png</file>
+        <file>Images/Characters/dominique-repair-complete.png</file>
+        <file>Images/Characters/dominique-repair-prepare.png</file>
+        <file>Images/Characters/dominque-new-design-winning.png</file>
+        <file>Images/Characters/dominique-damage.png</file>
     </qresource>
 </RCC>
