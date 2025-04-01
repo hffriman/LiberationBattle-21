@@ -38,10 +38,10 @@ void MainWindow::on_Quit_clicked()
 
 void MainWindow::on_AcceptGameStart_clicked()
 {
-    player->ResetPlayer(2000, 4, 400, 450, 480, 1);
+    player->ResetPlayer(2000, 4, 400, 450, 480, 2);
     enemy->ResetEnemy(3000, 500);
 
-    player->SetName(ui->givePlayerNameBox->toPlainText());
+    player->SetName(ui->givePlayerNameBox->toPlainText().toUpper());
 
     ui->stackedWidget->setCurrentIndex(2);
 
@@ -72,6 +72,7 @@ void MainWindow::on_GunAttack_clicked()
         player->SetGunsLeft(player->GetGunsLeft() - 1);
         ui->stackedWidget->setCurrentIndex(3);
         ui->Action->setText(gameManager->GetCurrentAction());
+        ui->Player_Phase2->setPixmap(QPixmap(":/Images/Characters/dominique-gun-prepare.png"));
         DrawCard();
     }
 }
@@ -81,6 +82,7 @@ void MainWindow::on_LifeRestoration_clicked()
     gameManager->SetCurrentAction("LIFE RESTORATION");
     ui->stackedWidget->setCurrentIndex(3);
     ui->Action->setText(gameManager->GetCurrentAction());
+    ui->Player_Phase2->setPixmap(QPixmap(":/Images/Characters/dominique-health-prepare.png"));
     DrawCard();
 }
 
@@ -295,6 +297,7 @@ void MainWindow::on_Stop_clicked()
     {
         int inflictedDamage = player->GetGunDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
+        ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-gun-shoot"));
         ui->ActionResultMessage->setText(QString::number(inflictedDamage) + " damage inflicted to " + enemy->GetName());
     }
 
@@ -315,12 +318,13 @@ void MainWindow::on_Stop_clicked()
             }
             message = *new QString("Health increased by " + QString::number(increasedHealth) + " POINTS");
         }
-        else if ((gameManager->GetPointsInCurrentTurn() == 21))
+        else if (gameManager->GetPointsInCurrentTurn() == 21)
         {
             player->SetFullHealthPoints(player->GetFullHealthPoints() * 2);
             player->SetCurrentHealthPoints(player->GetFullHealthPoints());
             message = *new QString("Health fully restored and multiplied");
         }
+        ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-health-drink.png"));
         ui->ActionResultMessage->setText(message);
     }
 
@@ -329,11 +333,11 @@ void MainWindow::on_Stop_clicked()
         int increasedWeapons = player->GetWeaponRepairPoints() * actionCounter;
         if (gameManager->GetPointsInCurrentTurn() < 21)
         {
-            if ((player->GetGunsLeft() + increasedWeapons) > (player->GetGunsTotal()))
+            if ((player->GetGunsLeft() + increasedWeapons) >= (player->GetGunsTotal()))
             {
                 player->SetGunsLeft(player->GetGunsTotal());
             }
-            if ((player->GetSwordsLeft() + increasedWeapons) > (player->GetSwordsTotal()))
+            if ((player->GetSwordsLeft() + increasedWeapons) >= (player->GetSwordsTotal()))
             {
                 player->SetSwordsLeft(player->GetSwordsTotal());
             }
@@ -354,7 +358,6 @@ void MainWindow::on_Stop_clicked()
             player->SetGunsLeft(player->GetGunsTotal());
             player->SetSwordsTotal(player->GetSwordsTotal() * 2);
             player->SetSwordsLeft(player->GetSwordsTotal());
-
             ui->ActionResultMessage->setText("Weapons repaired and leveled up successfully");
         }
         else if (gameManager->GetPointsInCurrentTurn() > 21)

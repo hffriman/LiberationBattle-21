@@ -16,7 +16,7 @@ Player::Player() {
     swordDamage = 400;
     gunDamage = 450;
     hpRestorePoints = 480;
-    weaponRepairPoints = 1;
+    weaponRepairPoints = 2;
     swordsTotal = 4;
     swordsLeft = 4;
     gunsTotal = 4;
@@ -157,5 +157,7 @@ void Player::SetImage(QWidget* image)
 {
     this->playerImage = image;
 }
+
+
 
 

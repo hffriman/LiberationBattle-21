@@ -67,5 +67,11 @@
         <file>Images/BackgroundImages/background-art-expanded.png</file>
         <file>Images/BackgroundImages/battle-ground.png</file>
         <file>Images/Characters/dominque-new-design.png</file>
+        <file>Images/BackgroundImages/cover.png</file>
+        <file>Images/Characters/dominique-idle.png</file>
+        <file>Images/Characters/dominique-gun-prepare.png</file>
+        <file>Images/Characters/dominique-gun-shoot.png</file>
+        <file>Images/Characters/dominique-health-prepare.png</file>
+        <file>Images/Characters/dominique-health-drink.png</file>
     </qresource>
 </RCC>
