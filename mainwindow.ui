@@ -1026,9 +1026,9 @@ QPushButton:hover {
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>130</y>
+        <y>60</y>
         <width>231</width>
-        <height>381</height>
+        <height>451</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1526,9 +1526,9 @@ border-radius: 30px 30px 30px 30px;</string>
      <widget class="QLabel" name="Player_Phase3">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>-10</x>
         <y>120</y>
-        <width>351</width>
+        <width>861</width>
         <height>401</height>
        </rect>
       </property>
@@ -1540,6 +1540,9 @@ border-radius: 30px 30px 30px 30px;</string>
       </property>
       <property name="textFormat">
        <enum>Qt::TextFormat::RichText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Images/Characters/dominique-gun-shoot.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>

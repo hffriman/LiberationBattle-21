@@ -60,6 +60,7 @@ void MainWindow::on_SwordAttack_clicked()
         ui->stackedWidget->setCurrentIndex(3);
         ui->Action->setText(gameManager->GetCurrentAction());
         gameManager->SetCurrentAction(gameManager->GetCurrentAction());
+        ui->Player_Phase2->setPixmap(QPixmap(":/Images/Characters/dominique-sword-prepare.png"));
         DrawCard();
     }
 }
@@ -269,6 +270,12 @@ void MainWindow::on_Ace10_clicked()
 void MainWindow::on_Stop_clicked()
 {
     ResetCardBoard();
+    if (gameManager->GetPointsInCurrentTurn() > 21)
+    {
+        on_EnemyTurnButton_clicked();
+        return;
+    }
+
     ui->stackedWidget->setCurrentIndex(4);
     ui->ActionMessage->setVisible(true);
     ui->ActionMessage->setText(player->GetName() + " used " + gameManager->GetCurrentAction());
