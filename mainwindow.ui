@@ -351,7 +351,7 @@ font-size: 35px;</string>
       <property name="font">
        <font>
         <family>Lucida Bright</family>
-        <pointsize>13</pointsize>
+        <pointsize>15</pointsize>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -362,7 +362,7 @@ font-size: 35px;</string>
 	border-image: url(:/Images/Buttons/menubutton.png);
 	background-repeat: none;
 	color: white;
-    font: 13pt &quot;Lucida Bright&quot;;
+    font: 15pt &quot;Lucida Bright&quot;;
 }
 
 QPushButton:hover {
