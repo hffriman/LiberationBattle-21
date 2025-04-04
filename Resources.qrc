@@ -92,5 +92,10 @@
         <file>SoundEffects/SwordPrepare.wav</file>
         <file>SoundEffects/SwordSlash.wav</file>
         <file>SoundEffects/WritingSound.wav</file>
+        <file>Music/lb21-perfectscore.wav</file>
+        <file>Music/lb21-congratulations.wav</file>
+        <file>Music/lb21-gameover.wav</file>
+        <file>Music/lb21-intro.wav</file>
+        <file>Music/lb21-over21.wav</file>
     </qresource>
 </RCC>

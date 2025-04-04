@@ -12,7 +12,7 @@ public:
     QMediaPlayer* soundPlayer;
     QAudioOutput* soundOutput;
 
-    void PlaySound(int i);
+    void PlaySound(int soundIndex);
 };
 
 #endif // SOUNDEFFECTPLAYER_H

@@ -8,6 +8,7 @@
 #include "gamemanager.h"
 #include <QPushButton>
 #include "soundeffectplayer.h"
+#include "musicplayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,6 +28,7 @@ public:
     Deck* deck;
     GameManager* gameManager;
     SoundEffectPlayer* soundEffectPlayer;
+    MusicPlayer* musicPlayer;
 
 private slots:
     void on_StartGame_clicked();

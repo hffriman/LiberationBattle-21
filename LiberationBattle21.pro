@@ -17,6 +17,7 @@ SOURCES += \
     gamemanager.cpp \
     main.cpp \
     mainwindow.cpp \
+    musicplayer.cpp \
     player.cpp \
     soundeffectplayer.cpp
 
@@ -26,6 +27,7 @@ HEADERS += \
     enemy.h \
     gamemanager.h \
     mainwindow.h \
+    musicplayer.h \
     player.h \
     soundeffectplayer.h
 

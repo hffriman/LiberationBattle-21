@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::LiberationBattle21)
 {
     soundEffectPlayer = new SoundEffectPlayer();
+    musicPlayer = new MusicPlayer();
+    musicPlayer->PlayMusic(0);
 
     deck = new Deck();
     deck->CreateDeck();
@@ -62,7 +64,7 @@ void MainWindow::on_AcceptGameStart_clicked()
     gameManager->SetTotalTurnsPassed(0);
 }
 
-// The Player has chosen SWORD ATTACK as their action
+// Occurs when the Player has chosen SWORD ATTACK as their action
 void MainWindow::on_SwordAttack_clicked()
 {
     if (player->GetSwordsLeft() > 0)
@@ -78,7 +80,7 @@ void MainWindow::on_SwordAttack_clicked()
     }
 }
 
-// The Player has chosen GUN ATTACK as their action
+// Occurs when the Player has chosen GUN ATTACK as their action
 void MainWindow::on_GunAttack_clicked()
 {
     if (player->GetGunsLeft() > 0)
@@ -93,7 +95,7 @@ void MainWindow::on_GunAttack_clicked()
     }
 }
 
-// The Player has chosen LIFE RESTORATION as their action
+// Occurs when the Player has chosen LIFE RESTORATION as their action
 void MainWindow::on_LifeRestoration_clicked()
 {
     soundEffectPlayer->PlaySound(7);
@@ -104,7 +106,7 @@ void MainWindow::on_LifeRestoration_clicked()
     DrawCard();
 }
 
-// The Player has chosen WEAPON REPAIRMENT as their action
+// Occurs when the Player has chosen WEAPON REPAIRMENT as their action
 void MainWindow::on_WeaponRepairment_clicked()
 {
     soundEffectPlayer->PlaySound(9);
@@ -163,6 +165,7 @@ void MainWindow::DrawCard()
         ui->DrawnCardNumber->setText(QString::number(gameManager->GetCurrentlyDrawnCards()));
         ui->Card->setPixmap(image);
 
+        // Note: Ace card is worth 0 points at default (the Player must decide whether it will be 1 or 10)
         if (drawnCard.GetCardPoints() == 0)
         {
             AceCardSelection();
@@ -172,7 +175,7 @@ void MainWindow::DrawCard()
     CheckCurrentCardPoints();
 }
 
-// Hides/Shows the SWORD ATTACK or GUN ATTACK buttons based on the Player's resources
+// Shows OR Hides the SWORD ATTACK or GUN ATTACK buttons based on the Player's resources
 void MainWindow::AdjustWeaponButtons(QPushButton* button, int valueNumber)
 {
     if (valueNumber <= 0)
@@ -185,6 +188,7 @@ void MainWindow::AdjustWeaponButtons(QPushButton* button, int valueNumber)
     }
 }
 
+// Shows OR Hides the Draw buttons on the Cardboard based on the boolean value
 void MainWindow::AdjustDrawButtons(bool status)
 {
     ui->DrawMore->setVisible(status);
@@ -193,6 +197,8 @@ void MainWindow::AdjustDrawButtons(bool status)
     ui->Stop->setEnabled(status);
 }
 
+// When the player draws an Ace, the buttons and labels for "Ace value selection"
+// are activated (and the regular Draw/Stop buttons are hidden)
 void MainWindow::AceCardSelection()
 {
     ui->DrawMore->setEnabled(false);
@@ -210,6 +216,8 @@ void MainWindow::AceCardSelection()
     ui->Ace10->setVisible(true);
 }
 
+// Shows OR Hides all the info labels that report the Player's card score
+// (Over 21 / Equal to 21 / or when an Ace card is drawn)
 void MainWindow::AdjustDrawStatusMessages(bool status)
 {
     ui->ActionPerfectText->setVisible(status);
@@ -217,12 +225,16 @@ void MainWindow::AdjustDrawStatusMessages(bool status)
     ui->AceNoticeText->setVisible(status);
 }
 
+// Shows OR Hides the report labels regarding the Player's used action and its success
+// - Happens when the card game section is over (on StackedWidget no. 4)
+// - Example: "Player has used GUN ATTACK. 400 damage points inflicted to ENEMY"
 void MainWindow::AdjustActionMessages(bool status)
 {
     ui->ActionMessage->setVisible(status);
     ui->ActionResultMessage->setVisible(status);
 }
 
+// Shows OR Hides the buttons and labels from "the Ace value selection"
 void MainWindow::AdjustAceSelection(bool status)
 {
     ui->Ace1->setEnabled(status);
@@ -232,6 +244,9 @@ void MainWindow::AdjustAceSelection(bool status)
     ui->AceNoticeText->setVisible(status);
 }
 
+// This is used to check the Player's current score in the card game section
+// - If the Player has gotten a score of 21 (or over 21), they are prevented from drawing more cards
+// - Otherwise, the card game can continue normally (but the board's UI elements are resetted to default just for precautions)
 void MainWindow::CheckCurrentCardPoints()
 {
     if (gameManager->GetPointsInCurrentTurn() < 21)
@@ -240,16 +255,19 @@ void MainWindow::CheckCurrentCardPoints()
     }
     else if (gameManager->GetPointsInCurrentTurn() > 21)
     {
+        musicPlayer->PlayMusic(1);
         PreventDrawing(0);
     }
     else
     {
+        musicPlayer->PlayMusic(2);
         PreventDrawing(1);
     }
 }
 
-// If statusCode is 0, the ui will inform the player of a failed action
-// If statusCode is 1, the ui will inform the player of the perfect action
+// This is used to prevent the player from drawing cards, but the outcome depends on the status code:
+// - If the status code is 0, the UI will inform the player of a failed action (the score is over 21)
+// - If the status code is 1, the UI will inform the player of the perfect action (the score is exactly 21)
 void MainWindow::PreventDrawing(int statusCode)
 {
     ui->DrawMore->setVisible(false);
@@ -261,22 +279,19 @@ void MainWindow::PreventDrawing(int statusCode)
     ui->ActionPerfectText->setVisible(false);
     ui->AceNoticeText->setVisible(false);
 
-    if (statusCode == 0)
-    {
-        ui->ActionFailedText->setVisible(true);
-    }
-    if (statusCode == 1)
-    {
-        ui->ActionPerfectText->setVisible(true);
-    }
+    if (statusCode == 0) { ui->ActionFailedText->setVisible(true);}
+    if (statusCode == 1) { ui->ActionPerfectText->setVisible(true);}
 }
 
+// This occurs when the Player has pressed "Draw More" button
 void MainWindow::on_DrawMore_clicked()
 {
     soundEffectPlayer->PlaySound(0);
     DrawCard();
 }
 
+
+// This occurs when the Player has selected the Ace card's value to be 1
 void MainWindow::on_Ace1_clicked()
 {
     soundEffectPlayer->PlaySound(0);
@@ -286,6 +301,7 @@ void MainWindow::on_Ace1_clicked()
     CheckCurrentCardPoints();
 }
 
+// This occurs when the Player has selected the Ace card's value to be 10
 void MainWindow::on_Ace10_clicked()
 {
     soundEffectPlayer->PlaySound(0);
@@ -295,7 +311,13 @@ void MainWindow::on_Ace10_clicked()
     CheckCurrentCardPoints();
 }
 
-void MainWindow::on_Stop_clicked()
+// This occurs when the Player has stopped drawing any more cards on their turn
+// - This activates the Stacked Widget no. 4, which:
+//   1) Reports the player's chosen action
+//   2) Shows the effect calculations of this action (based on the results of 21 card game section)
+//   3) Activates the correct sound effect and
+//   4) Inserts the correct Player / Enemy images
+ void MainWindow::on_Stop_clicked()
 {
     soundEffectPlayer->PlaySound(0);
     ResetCardBoard();
@@ -411,6 +433,10 @@ void MainWindow::on_Stop_clicked()
     UpdatePlayerStatus();
 }
 
+
+// This represents the Enemy's turn
+// - The Enemy's action and damage points are reported
+// - The Images of the Enemy and Player are also updated
 void MainWindow::on_EnemyTurnButton_clicked()
 {
     soundEffectPlayer->PlaySound(11);
@@ -428,6 +454,12 @@ void MainWindow::on_EnemyTurnButton_clicked()
     UpdatePlayerStatus();
 }
 
+// This occurs when the Enemy's turn has ended
+// - If the Player or Enemy's health points are 0:
+//   --> the game will switch to either "Game Over" or "Congratulations" sections
+// - If both are still alive, the new turn will begin (returning to the "Action Selection" phase):
+//   --> the Game Manager will reset the card scores and update the number of total turns
+//   --> Additionally, the Card Board is resetted, and the Player / Enemy Ui elements are updated
 void MainWindow::on_EndGameTurnButton_clicked()
 {
     soundEffectPlayer->PlaySound(0);
@@ -444,52 +476,62 @@ void MainWindow::on_EndGameTurnButton_clicked()
     }
     else if (player->GetCurrentHealthPoints() > 0 && enemy->GetCurrentHealthPoints() <= 0)
     {
+        musicPlayer->PlayMusic(4);
         ui->stackedWidget->setCurrentIndex(6);
         ui->Player_Name_FinalPhase->setText(player->GetName());
         ui->ClearedInTurns->setText("IN " + QString::number(gameManager->GetTotalTurnsPassed()) + " TURNS");
     }
     else if (player->GetCurrentHealthPoints() <= 0 && enemy->GetCurrentHealthPoints() > 0)
     {
+        musicPlayer->PlayMusic(3);
         ui->stackedWidget->setCurrentIndex(7);
     }
 }
 
+// This occurs when "Play Again" button is clicked
 void MainWindow::on_PlayAgain_clicked()
 {
     soundEffectPlayer->PlaySound(0);
     on_AcceptGameStart_clicked();
 }
 
+// This occurs when "Exit to Menu" button is clicked
 void MainWindow::on_ExitToMenu_clicked()
 {
     soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+// This occurs when Player return back to Menu from certain sections
 void MainWindow::on_BackToMenu_clicked()
 {
     soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+// This occurs when the Player has pressed "Give Up" button
 void MainWindow::on_GiveUp_clicked()
 {
     soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+// This occurs when the Player wants to try again after Game Over
 void MainWindow::on_GameOverTryAgain_clicked()
 {
     soundEffectPlayer->PlaySound(0);
     on_AcceptGameStart_clicked();
 }
 
+// This occurs when the Player has pressed "Give Up" button when the Game is Over
 void MainWindow::on_GameOverGiveUp_clicked()
 {
     soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+// This occurs when the Player has given a new name to their character
+// and pressed a separate "SAVE" button
 void MainWindow::on_SaveNameButton_clicked()
 {
     if (ui->givePlayerNameBox->text().trimmed() != "")
@@ -499,7 +541,7 @@ void MainWindow::on_SaveNameButton_clicked()
     }
 }
 
-
+// This occurs when the Player returns from the separate "Credits" section
 void MainWindow::on_ReturnFromCredits_clicked()
 {
     soundEffectPlayer->PlaySound(1);
@@ -507,6 +549,7 @@ void MainWindow::on_ReturnFromCredits_clicked()
 }
 
 
+// This occurs when the Player presses "Credits" button in the Main Menu
 void MainWindow::on_CreditsButton_clicked()
 {
     soundEffectPlayer->PlaySound(0);
