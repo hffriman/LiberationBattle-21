@@ -7,8 +7,8 @@
 
 <h3>Core Idea</h3>
 <p>In this game, you must defeat the enemy with four different actions: SWORD ATTACK, GUN ATTACK, HEALTH RESTORATION and WEAPON REPAIRMENT.</p>
-<p>The success of these actions is decided by the classic card game 21 (also known as Blackjack).</p>
-<p>If you draw enough cards to get a total score of 21 (not over nor under), your action will get special effects! Investigate them and find the way to defeat NOSFERATU.</p>
+<p>The success and strength of these actions is decided by the classic card game 21 (also known as Blackjack). In it, your objective is to draw cards one by one, attempting to get your total score as close to 21 as possible.</p>
+<p>If you draw enough cards to get an exact score of 21, your action will get special effects! Investigate them and find the way to defeat NOSFERATU.</p>
 
 
 <h3>Background</h3>
