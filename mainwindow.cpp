@@ -1,15 +1,16 @@
 #include "mainwindow.h"
+#include "soundeffectplayer.h"
 #include "ui_mainwindow.h"
 #include "player.h"
 #include "enemy.h"
 #include "deck.h"
-#include <QFile>
-#include <QJsonParseError>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LiberationBattle21)
 {
+    soundEffectPlayer = new SoundEffectPlayer();
+
     deck = new Deck();
     deck->CreateDeck();
 
@@ -28,33 +29,34 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_StartGame_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_Quit_clicked()
 {
+    soundEffectPlayer->PlaySound(1);
     QApplication::quit();
 }
 
 void MainWindow::on_AcceptGameStart_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
+
     player->ResetPlayer(2000, 4, 400, 450, 480, 2);
     enemy->ResetEnemy(3000, 500);
 
-    player->SetName(ui->givePlayerNameBox->toPlainText().toUpper());
-
     ui->stackedWidget->setCurrentIndex(2);
-
     UpdatePlayerStatus();
     UpdateEnemyStatus();
-
-    gameManager->SetTotalTurnsPassed(1);
+    gameManager->SetTotalTurnsPassed(0);
 }
 
 void MainWindow::on_SwordAttack_clicked()
 {
     if (player->GetSwordsLeft() > 0)
     {
+        soundEffectPlayer->PlaySound(3);
         gameManager->SetCurrentAction("SWORD ATTACK");
         player->SetSwordsLeft(player->GetSwordsLeft() - 1);
         ui->stackedWidget->setCurrentIndex(3);
@@ -69,6 +71,7 @@ void MainWindow::on_GunAttack_clicked()
 {
     if (player->GetGunsLeft() > 0)
     {
+        soundEffectPlayer->PlaySound(5);
         gameManager->SetCurrentAction("GUN ATTACK");
         player->SetGunsLeft(player->GetGunsLeft() - 1);
         ui->stackedWidget->setCurrentIndex(3);
@@ -80,6 +83,7 @@ void MainWindow::on_GunAttack_clicked()
 
 void MainWindow::on_LifeRestoration_clicked()
 {
+    soundEffectPlayer->PlaySound(7);
     gameManager->SetCurrentAction("LIFE RESTORATION");
     ui->stackedWidget->setCurrentIndex(3);
     ui->Action->setText(gameManager->GetCurrentAction());
@@ -89,6 +93,7 @@ void MainWindow::on_LifeRestoration_clicked()
 
 void MainWindow::on_WeaponRepairment_clicked()
 {
+    soundEffectPlayer->PlaySound(9);
     gameManager->SetCurrentAction("WEAPON REPAIRMENT");
     ui->stackedWidget->setCurrentIndex(3);
     ui->Action->setText(gameManager->GetCurrentAction());
@@ -249,11 +254,13 @@ void MainWindow::PreventDrawing(int statusCode)
 
 void MainWindow::on_DrawMore_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     DrawCard();
 }
 
 void MainWindow::on_Ace1_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 1);
     ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
     AdjustAceSelection(false);
@@ -262,6 +269,7 @@ void MainWindow::on_Ace1_clicked()
 
 void MainWindow::on_Ace10_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     gameManager->SetPointsInCurrentTurn(gameManager->GetPointsInCurrentTurn() + 10);
     ui->TotalPointsValue->setText(QString::number(gameManager->GetPointsInCurrentTurn()));
     AdjustAceSelection(false);
@@ -270,6 +278,7 @@ void MainWindow::on_Ace10_clicked()
 
 void MainWindow::on_Stop_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     ResetCardBoard();
     if (gameManager->GetPointsInCurrentTurn() > 21)
     {
@@ -296,6 +305,7 @@ void MainWindow::on_Stop_clicked()
 
     if (gameManager->GetCurrentAction() == "SWORD ATTACK")
     {
+        soundEffectPlayer->PlaySound(4);
         int inflictedDamage = player->GetSwordDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-sword-slash.png"));
@@ -305,6 +315,7 @@ void MainWindow::on_Stop_clicked()
 
     if (gameManager->GetCurrentAction() == "GUN ATTACK")
     {
+        soundEffectPlayer->PlaySound(6);
         int inflictedDamage = player->GetGunDamage() * actionCounter;
         enemy->DecreaseHealth(inflictedDamage);
         ui->Player_Phase3->setPixmap(QPixmap(":/Images/Characters/dominique-gun-shoot"));
@@ -314,6 +325,7 @@ void MainWindow::on_Stop_clicked()
 
     if (gameManager->GetCurrentAction() == "LIFE RESTORATION")
     {
+        soundEffectPlayer->PlaySound(8);
         QString message = *new QString();
         int increasedHealth = player->GetHpRestorePoints() * actionCounter;
 
@@ -342,6 +354,7 @@ void MainWindow::on_Stop_clicked()
 
     if (gameManager->GetCurrentAction() == "WEAPON REPAIRMENT")
     {
+        soundEffectPlayer->PlaySound(10);
         int increasedWeapons = player->GetWeaponRepairPoints() * actionCounter;
         if (gameManager->GetPointsInCurrentTurn() < 21)
         {
@@ -381,6 +394,7 @@ void MainWindow::on_Stop_clicked()
 
 void MainWindow::on_EnemyTurnButton_clicked()
 {
+    soundEffectPlayer->PlaySound(11);
     if (enemy->GetCurrentHealthPoints() > 0) {
         ui->stackedWidget->setCurrentIndex(5);
         ui->EnemyActionMessage->setText(enemy->GetName() + " used DESTRUCTION RAY");
@@ -397,6 +411,7 @@ void MainWindow::on_EnemyTurnButton_clicked()
 
 void MainWindow::on_EndGameTurnButton_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     gameManager->SetCurrentlyDrawnCards(0);
     gameManager->SetPointsInCurrentTurn(0);
     gameManager->SetTotalTurnsPassed(gameManager->GetTotalTurnsPassed() + 1);
@@ -422,31 +437,60 @@ void MainWindow::on_EndGameTurnButton_clicked()
 
 void MainWindow::on_PlayAgain_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     on_AcceptGameStart_clicked();
 }
 
 void MainWindow::on_ExitToMenu_clicked()
 {
+    soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_BackToMenu_clicked()
 {
+    soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_GiveUp_clicked()
 {
+    soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_GameOverTryAgain_clicked()
 {
+    soundEffectPlayer->PlaySound(0);
     on_AcceptGameStart_clicked();
 }
 
 void MainWindow::on_GameOverGiveUp_clicked()
 {
+    soundEffectPlayer->PlaySound(1);
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_SaveNameButton_clicked()
+{
+    if (ui->givePlayerNameBox->text().trimmed() != "")
+    {
+        player->SetName(ui->givePlayerNameBox->text().trimmed().toUpper());
+        soundEffectPlayer->PlaySound(2);
+    }
+}
+
+
+void MainWindow::on_ReturnFromCredits_clicked()
+{
+    soundEffectPlayer->PlaySound(1);
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_CreditsButton_clicked()
+{
+    soundEffectPlayer->PlaySound(0);
+    ui->stackedWidget->setCurrentIndex(8);
 }
 

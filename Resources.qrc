@@ -80,5 +80,17 @@
         <file>Images/Characters/nosferatu_attack.png</file>
         <file>Images/Characters/nosferatu_damage.png</file>
         <file>Images/Characters/nosferatu_idle.png</file>
+        <file>SoundEffects/BottlePrepare.wav</file>
+        <file>SoundEffects/ButtonSound.wav</file>
+        <file>SoundEffects/ButtonSoundCancel.wav</file>
+        <file>SoundEffects/DestructionRay.wav</file>
+        <file>SoundEffects/DrinkSound.wav</file>
+        <file>SoundEffects/GunPrepare.wav</file>
+        <file>SoundEffects/GunShot.wav</file>
+        <file>SoundEffects/PrepareWeaponRepair.wav</file>
+        <file>SoundEffects/RepairWeapons.wav</file>
+        <file>SoundEffects/SwordPrepare.wav</file>
+        <file>SoundEffects/SwordSlash.wav</file>
+        <file>SoundEffects/WritingSound.wav</file>
     </qresource>
 </RCC>

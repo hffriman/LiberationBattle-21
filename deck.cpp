@@ -20,8 +20,5 @@ void Deck::CreateDeck()
         card.SetCardImageSource(cardImageSources[i]);
 
         cards[i] = card;
-        qDebug() << cards[i].GetCardName();
-        qDebug() << cards[i].GetCardPoints();
-        qDebug() << cards[i].GetCardImageSource();
     }
 }

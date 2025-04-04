@@ -7,6 +7,7 @@
 #include "deck.h"
 #include "gamemanager.h"
 #include <QPushButton>
+#include "soundeffectplayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,6 +26,7 @@ public:
     Enemy* enemy;
     Deck* deck;
     GameManager* gameManager;
+    SoundEffectPlayer* soundEffectPlayer;
 
 private slots:
     void on_StartGame_clicked();
@@ -88,6 +90,12 @@ private slots:
     void on_GameOverTryAgain_clicked();
 
     void on_GameOverGiveUp_clicked();
+
+    void on_SaveNameButton_clicked();
+
+    void on_ReturnFromCredits_clicked();
+
+    void on_CreditsButton_clicked();
 
 private:
     Ui::LiberationBattle21 *ui;

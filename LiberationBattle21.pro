@@ -1,5 +1,7 @@
 QT       += core gui
 
+QT       += multimedia
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -15,7 +17,8 @@ SOURCES += \
     gamemanager.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    soundeffectplayer.cpp
 
 HEADERS += \
     card.h \
@@ -23,7 +26,8 @@ HEADERS += \
     enemy.h \
     gamemanager.h \
     mainwindow.h \
-    player.h
+    player.h \
+    soundeffectplayer.h
 
 FORMS += \
     mainwindow.ui
