@@ -1,6 +1,11 @@
 <h1>Liberation Battle 21</h1>
 <h2>A Turn-Based Fighting Game Inspired by the Rules of "21"</h2>
 
+![a painting of a soldier's silhouette in a sea of fire, holding a sword and a gun in his hands.](https://github.com/hffriman/LiberationBattle-21/blob/master/lb21-newcover.png)
+
+<h2>Download the Game from Itch.io: <h2>
+<p>https://henrysfriman.itch.io/liberation-battle-21-prototype</p>
+
 <h3>Story and Setting</h3>
 <p>In <b>Liberation Battle 21</b>, you play as Dominique, a French revolutionary soldier, who is suddenly facing a terrifiying cyborg from the future — NOSFERATU.</p> 
 <p>With a strategic mind and a heart of a soldier, do you have what it takes to liberate the world once and for all?</p>
