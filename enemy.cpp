@@ -1,5 +1,9 @@
 #include "enemy.h"
 
+/* Enemy:
+ * - Represents the player's opponent
+ * - Has some similarities with the Player class (but is much more simpler)
+ */
 Enemy::Enemy() {
 
     name = "NOSFERATU";

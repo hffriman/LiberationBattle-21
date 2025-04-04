@@ -2,6 +2,9 @@
 #include "card.h"
 #include <QDebug>
 
+/* Deck:
+ * - Contains all the necessary Card objects
+ */
 Deck::Deck() {
 
 }

@@ -5,6 +5,10 @@
 #include "enemy.h"
 #include "deck.h"
 
+/* Main Window:
+ * - Handles all the scenes (pages of StackedWidgets)
+ * - Handles most of the gameplay and interaction
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LiberationBattle21)
@@ -39,6 +43,12 @@ void MainWindow::on_Quit_clicked()
     QApplication::quit();
 }
 
+
+/* When the actual gameplay begins:
+ * 1. the values of Player and Enemy objects
+ * 2. the values are updated in the UI screen
+ * 3. the number of total game turns is resetted to 0
+*/
 void MainWindow::on_AcceptGameStart_clicked()
 {
     soundEffectPlayer->PlaySound(0);
@@ -52,6 +62,7 @@ void MainWindow::on_AcceptGameStart_clicked()
     gameManager->SetTotalTurnsPassed(0);
 }
 
+// The Player has chosen SWORD ATTACK as their action
 void MainWindow::on_SwordAttack_clicked()
 {
     if (player->GetSwordsLeft() > 0)
@@ -67,6 +78,7 @@ void MainWindow::on_SwordAttack_clicked()
     }
 }
 
+// The Player has chosen GUN ATTACK as their action
 void MainWindow::on_GunAttack_clicked()
 {
     if (player->GetGunsLeft() > 0)
@@ -81,6 +93,7 @@ void MainWindow::on_GunAttack_clicked()
     }
 }
 
+// The Player has chosen LIFE RESTORATION as their action
 void MainWindow::on_LifeRestoration_clicked()
 {
     soundEffectPlayer->PlaySound(7);
@@ -91,6 +104,7 @@ void MainWindow::on_LifeRestoration_clicked()
     DrawCard();
 }
 
+// The Player has chosen WEAPON REPAIRMENT as their action
 void MainWindow::on_WeaponRepairment_clicked()
 {
     soundEffectPlayer->PlaySound(9);
@@ -101,6 +115,8 @@ void MainWindow::on_WeaponRepairment_clicked()
     DrawCard();
 }
 
+// Updates the attributes of the Player object, as well as all the related UI elements
+// (additionally, SWORD ATTACK and GUN ATTACK buttons become hidden if the player has used all of them)
 void MainWindow::UpdatePlayerStatus()
 {
     player->SetSwordsLeft(player->GetSwordsLeft());
@@ -115,6 +131,7 @@ void MainWindow::UpdatePlayerStatus()
     AdjustWeaponButtons(ui->GunAttack, player->GetGunsLeft());
 }
 
+// Updates the UI values related to the Enemy object
 void MainWindow::UpdateEnemyStatus()
 {
     ui->EnemyName->setText(enemy->GetName());
@@ -122,6 +139,7 @@ void MainWindow::UpdateEnemyStatus()
     ui->EnemyHP->setText(QString::number(enemy->GetCurrentHealthPoints()) + " / " + QString::number(enemy->GetFullHealthPoints()));
 }
 
+// Resets the buttons and labels of the cardboard to its original state
 void MainWindow::ResetCardBoard()
 {
     AdjustDrawButtons(true);
@@ -130,6 +148,7 @@ void MainWindow::ResetCardBoard()
     AdjustActionMessages(false);
 }
 
+// Represents the card-drawing action in the 21 card game section
 void MainWindow::DrawCard()
 {
     ResetCardBoard();
@@ -153,7 +172,7 @@ void MainWindow::DrawCard()
     CheckCurrentCardPoints();
 }
 
-
+// Hides/Shows the SWORD ATTACK or GUN ATTACK buttons based on the Player's resources
 void MainWindow::AdjustWeaponButtons(QPushButton* button, int valueNumber)
 {
     if (valueNumber <= 0)

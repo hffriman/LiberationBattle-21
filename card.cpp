@@ -1,5 +1,11 @@
 #include "card.h"
 
+/* Card
+ * - Contains details of a single card, such as:
+ *   1. The name of the card
+ *   2. The points granted by the card
+ *   3. The image source of the card
+ */
 Card::Card() {
 
     cardName = "";
