@@ -5,10 +5,14 @@
 <p>In <b>Liberation Battle 21</b>, your objective is to save humanity from a terrifiying cyborg from the future — NOSFERATU.</p> 
 <p>With a strategic mind and a heart of a soldier, do you have what it takes to liberate the world once and for all?</p>
 
+![a swordsman against a spider-like humanoid cyborg in a burning city](https://github.com/hffriman/LiberationBattle-21/blob/master/lb21-screenshot1.png)
+
 <h3>Core Idea</h3>
 <p>In this game, you must defeat the enemy with four different actions: SWORD ATTACK, GUN ATTACK, HEALTH RESTORATION and WEAPON REPAIRMENT.</p>
 <p>The success and strength of these actions is decided by the classic card game 21 (also known as Blackjack). In it, your objective is to draw cards one by one, attempting to get your total score as close to 21 as possible.</p>
 <p>If you draw enough cards to get an exact score of 21, your action will get special effects! Investigate them and find the way to defeat NOSFERATU.</p>
+
+![a game card presented in the middle of the soldier and cyborg](https://github.com/hffriman/LiberationBattle-21/blob/master/lb21-screenshot2.png)
 
 
 <h3>Background</h3>
